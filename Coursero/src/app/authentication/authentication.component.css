@@ -1,0 +1,18 @@
+.column1 {
+    float: left;
+    width: 70%;
+    background-color: #D7D7D7;
+    height: 500px;
+  }
+  .column2 {
+    float: left;
+    width: 30%;
+    background-color: #38A2A3;
+    height: 500px;
+  }
+.center-data{
+    margin-left: 40%;
+}
+button[type=button]:hover{
+    text-decoration:underline;
+}
