@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { DatabaseService } from './database.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,4 +7,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Coursero';
+  constructor(private dbManager: DatabaseService){}
+
+  databaseTest(){
+    /*
+    let userData = new UserComponent();
+    userData.FillData("zaki" , "zaclone@shaco.lol" , "lol", "Student");
+    this.dbManager.addUser(userData , false);
+    */
+    var users = this.dbManager.getUsers(false);
+    console.log(users);
+  }
 }

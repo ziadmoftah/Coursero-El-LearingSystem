@@ -4,8 +4,8 @@ import { MatTableModule } from '@angular/material/table';
      
 
 import { AppComponent } from './app.component';
-import { UserComponent } from './user/user.component';
-import { AuthenticationComponent } from './authentication/authentication.component';
+import { HttpClientModule } from '@angular/common/http';
+import { DatabaseService } from './database.service';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { CoursesComponent } from './courses/courses.component';
@@ -14,13 +14,15 @@ import { RegCoursesComponent } from './reg-courses/reg-courses.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { ViewCourseComponent } from './view-course/view-course.component';
+
 import { AdminComponent } from './admin/admin.component';
+
+import { UserService } from './user.service';
+import { AuthenticationService } from './authentication.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserComponent,
-    AuthenticationComponent,
     FooterComponent,
     HeaderComponent,
     CoursesComponent,
@@ -33,10 +35,11 @@ import { AdminComponent } from './admin/admin.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     MatTableModule
 
-    ],
-  providers: [],
+  ],
+  providers: [DatabaseService, UserService, AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
