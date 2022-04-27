@@ -1,0 +1,32 @@
+<app-header></app-header>
+<br>  <br>
+<table>
+    <tr>
+      <th>Course Code</th>
+      <th>Course name</th>
+      <th>Credit Hours</th>
+      <th></th>
+    </tr>
+    <tr *ngFor="let course of all_course ">
+      <td>{{course.code}}</td>  
+      <td>{{course.name}}</td>
+      <td>{{course.hours}}</td>
+      <td><Button type="button" style="background-color: transparent; border-color: transparent; color: blue;" >Register Course</Button></td>
+    </tr>
+  </table>
+  <br>  <br>  <br>  <br>
+  <hr>
+  <br>  <br>
+<div class="courseform">
+  <form > 
+    <label for="course-code">Course Code :</label>
+    <input type="text" id="CourseCode" name="CourseCode" value=""><br><br>
+    <label for="course-name">Course Name :</label>
+    <input type="text" id="CourseName" name="CourseName" value=""><br><br>
+    <label for="course-hours">Course Credit Hours :</label>
+    <input type="text" id="CourseHour" name="CourseHour" value=""><br><br>
+    <input type="submit" value="Add Course">
+  </form>
+</div>
+<br>  <br>  <br>  <br> 
+<app-footer></app-footer>

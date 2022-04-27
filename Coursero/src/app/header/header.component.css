@@ -1,0 +1,25 @@
+.header {
+    width: 100%;
+    background-color: white;
+    height: 80px;
+    border-color: gray;
+    border-style: outset;
+    border-width: 1px;
+  }
+  .butt{
+    color:black;
+    background-color: transparent;
+    font-size: x-large; 
+    height:40px;
+    border-color: transparent; 
+    padding-right: 100%;
+
+  }
+button[type=button]:hover{
+  text-decoration:underline;
+}
+td{
+  padding-left: 40px;
+  
+
+}

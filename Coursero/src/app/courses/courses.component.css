@@ -1,0 +1,14 @@
+table{
+    width: 100%;
+}
+th {
+    font-size: xx-large;
+    text-align: center;
+}
+td {
+    text-align: center;
+    padding-top: 10px;
+}
+button[type=button]:hover{
+    text-decoration:underline;
+}
