@@ -16,7 +16,7 @@ export class AuthenticationComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  Register(name:string , account:string , password:string): Boolean {
+  Register(name:string , account:string , password:string, type:string): Boolean {
     if ( name == ""|| account == "" || password == ""){   // Whether any text field is empty
       this.errorMessage = "Please Make Sure You Have Filled All The Fields" ;
       return false;
@@ -31,7 +31,7 @@ export class AuthenticationComponent implements OnInit {
     }
 
     let newUser:UserComponent = new UserComponent() ;
-    newUser.FillData(name , account , password ) ;
+    newUser.FillData(name , account , password, type ) ;
     this.Users.push(newUser);
     this.errorMessage = "User Registered Successfully" ;
     return true ; 
