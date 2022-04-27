@@ -1,5 +1,6 @@
 <body>
-<p style="text-align: center; font-size: 60px; "> WELCOME TO<br>COURSERO<br></p>
+  <br>
+<p style="text-align: center; font-size: 60px; "> WELCOME TO COURSERO<br></p>
 
 <div class="row">
   <div class="column1">
@@ -11,14 +12,14 @@
       <input style="width: 250px;" type="password" id="pass" name="password" minlength="8" required #password><br>
       <label for="valid" style="color: red; text-align: center; font-size:small;">{{errorMessage}}</label><br><br>
       <input style= "margin-left: 15%; background-color: #38A2A3; color: white;border-color: white; border-color: gray;
-                    border-style: solid; border-width: 1px; border-radius: 20px; " type="submit" value="Sign in" (click)="Login(account.value , password.value)">
+                    border-style: solid; border-width: 1px; border-radius: 20px; " type="submit" value="Sign in" (click)="Login(account.value , password.value)" routerLink="/Home">
     </div>
   </div>
 
   <div class="column2">
     <br><br><br><h1 style="text-align: center; color: white;">Hello, Friend!</h1><br><br><br>
     <p style="text-align: center; color: white; font-size: larger;">Enter your personal details <br>and start journey with us</p>
-    <br><br><button type="button" style="color:#38A2A3; background-color: white; border-radius: 15px; margin-left: 45%; border-color: gray;border-style: solid;border-width: 1px;">Sign Up</button>
+    <br><br><button type="button" style="color:#38A2A3; background-color: white; border-radius: 15px; margin-left: 45%; border-color: gray;border-style: solid;border-width: 1px;" routerLink="/SignUp">Sign Up</button>
   </div>
 
 </div>

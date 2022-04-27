@@ -9,7 +9,7 @@ import { AuthenticationService } from '../authentication.service';
 export class SignInComponent implements OnInit {
 
   private authentication:AuthenticationService;
-  public errorMessage:string;
+  errorMessage:string;
   constructor() {
     this.authentication = new AuthenticationService();
     this.errorMessage = "";
