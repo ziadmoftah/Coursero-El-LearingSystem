@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { UserComponent } from './user/user.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthenticationComponent } from './authentication/authentication.component';
-import { DatabaseManagerComponent } from './database-manager/database-manager.component';
 import { DatabaseService } from './database.service';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
@@ -21,8 +20,6 @@ import { ViewCourseComponent } from './view-course/view-course.component';
     AppComponent,
     UserComponent,
     AuthenticationComponent,
-
-    DatabaseManagerComponent,
     FooterComponent,
     HeaderComponent,
     CoursesComponent,
