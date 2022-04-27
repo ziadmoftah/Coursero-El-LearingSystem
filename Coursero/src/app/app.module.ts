@@ -3,16 +3,21 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { UserComponent } from './user/user.component';
+import { HttpClientModule } from '@angular/common/http';
 import { AuthenticationComponent } from './authentication/authentication.component';
+import { DatabaseManagerComponent } from './database-manager/database-manager.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserComponent,
-    AuthenticationComponent
+    AuthenticationComponent,
+    DatabaseManagerComponent,
+    
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
