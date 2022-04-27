@@ -95,7 +95,7 @@ export class DatabaseService {
     this.httpClient.post(address , Lecture).subscribe(response => console.log("Success"));
   }
   getLectures():LecturesService[]{
-    let address=this.DBurl+"Courses.json";;
+    let address=this.DBurl+"Lectures.json";;
     
 
     var lectures = new Array<LecturesService>();
@@ -111,4 +111,28 @@ export class DatabaseService {
     console.log(lectures);
     return lectures;
   }
+  registerCourse(courseName:string, studentName:string){
+    // add users to notverified db
+    let temp = {courseName,studentName}
+    let address=this.DBurl+"RegisteredCourses.json";
+    this.httpClient.post(address , temp).subscribe(response => console.log("Success"));
+  }
+
+  getRegistered():{courseName:string,studentName:string}[]{
+    let address=this.DBurl+"RegisteredCourses.json";
+
+    var courses = new Array<{courseName:string,studentName:string}>();
+    this.httpClient.get<{courseName:string,studentName:string}[]>(address)
+    .subscribe((data:{courseName:string,studentName:string}[]) => {
+      Object.values(data).forEach(record => {
+          courses.push(record);
+      })
+    });
+    
+    
+    console.log(address);
+    console.log(courses);
+    return courses;
+  }
+
 }

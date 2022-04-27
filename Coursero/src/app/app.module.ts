@@ -38,6 +38,7 @@ const routes: Routes = [
 ];
 
 import { CourseService } from './course.service';
+import { FormsModule} from '@angular/forms'
 FullCalendarModule.registerPlugins([ 
   dayGridPlugin,
   interactionPlugin
@@ -61,7 +62,8 @@ FullCalendarModule.registerPlugins([
     HttpClientModule,
     RouterModule.forRoot(routes),
     MatTableModule,
-    FullCalendarModule
+    FullCalendarModule,
+    FormsModule
   ],
   providers: [DatabaseService, UserService, AuthenticationService, CourseService],
   bootstrap: [AppComponent]

@@ -8,11 +8,11 @@
       <th>Credit Hours</th>
       <th></th>
     </tr>
-    <tr *ngFor="let course of all_course ">
+    <tr *ngFor="let course of courses ">
       <td>{{course.code}}</td>  
       <td>{{course.name}}</td>
-      <td>{{course.hours}}</td>
-      <td><Button type="button" style="background-color: transparent; border-color: transparent; color: blue;" >Register Course</Button></td>
+      <td>{{course.creditHour}}</td>
+      <td><Button type="button"  (click)="Reg(course.name)" style="background-color: transparent; border-color: transparent; color: blue;" >Register Course</Button></td>
     </tr>
   </table>
   <br>  <br>  <br>  <br>
