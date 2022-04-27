@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { UserComponent } from './user/user.component';
@@ -14,6 +15,18 @@ import { RegCoursesComponent } from './reg-courses/reg-courses.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { ViewCourseComponent } from './view-course/view-course.component';
+
+
+
+const routes: Routes = [
+  { path: 'SignIn', component: SignInComponent },
+  { path: 'SignUp', component: SignUpComponent },
+  { path: '', redirectTo: '/SignIn', pathMatch: 'full' },
+  { path: 'Home', component: HomePageComponent },
+  { path: 'Course', component: CoursesComponent },
+  { path: 'ViewCourse', component: ViewCourseComponent },
+  { path: 'RegisterCourse', component: RegCoursesComponent }
+];
 
 @NgModule({
   declarations: [
@@ -32,7 +45,8 @@ import { ViewCourseComponent } from './view-course/view-course.component';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [DatabaseService],
   bootstrap: [AppComponent]
