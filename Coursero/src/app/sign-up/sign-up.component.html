@@ -1,5 +1,5 @@
-  
-  <p style="text-align: center; font-size: 60px; "> WELCOME TO<br>COURSERO<br></p>
+  <br>
+  <p style="text-align: center; font-size: 60px; "> WELCOME TO COURSERO<br></p>
 
 
   <div class="row">
@@ -7,7 +7,7 @@
     <div class="column1">
       <br><br><br><h1 style="text-align: center; color: white;">Welcome Back!</h1><br><br><br>
       <p style="text-align: center; color: white; font-size: larger;">To keep connected with us please<br> login with your personal info</p>
-      <br><br><br><button type="button" style="color:#38A2A3; background-color: white; border-radius: 15px; margin-left: 45%; border-color: gray; border-style: solid; border-width: 1px;">Sign In</button>
+      <br><br><br><button type="button" style="color:#38A2A3; background-color: white; border-radius: 15px; margin-left: 45%; border-color: gray; border-style: solid; border-width: 1px;" routerLink="/SignIn">Sign In</button>
     </div>
     
     <div class="column2">
@@ -30,7 +30,7 @@
           <label for="valid" style="color: red; text-align: center; font-size:small;">{{errorMessage}}</label><br><br>
 
           <input style= "margin-left: 15%; background-color: #38A2A3; color: white;border-color: white; border-radius: 20px; border-color: gray; border-style: solid;
-                        border-width: 1px;" type="submit" value="Sign Up" (click)="Register(name.value , account.value , password.value , student.checked)">
+                        border-width: 1px;" type="submit" value="Sign Up" (click)="Register(name.value , account.value , password.value , student.checked)" routerLink="/Home">
        </form>
       </div>
     </div>
