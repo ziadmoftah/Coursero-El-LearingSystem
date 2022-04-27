@@ -10,17 +10,20 @@ export class UserComponent implements OnInit {
   name:string ;
   account:string;
   password:string;
+  type:string;
+
   constructor() { 
-    this.name = this.password = this.account = "" ; 
+    this.name = this.password = this.account = this.type = "" ; 
   }
 
   ngOnInit(): void {
   }
 
-  FillData(name:string , account:string , password:string){
+  FillData(name:string , account:string , password:string, type:string){
     this.name = name ; 
     this.account = account ; 
     this.password = password ; 
+    this.type = type;
   }
 
   Get_Name():string{

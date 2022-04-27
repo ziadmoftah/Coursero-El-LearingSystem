@@ -14,7 +14,7 @@ export class AppComponent {
   databaseTest(){
     /*
     let userData = new UserComponent();
-    userData.FillData("zaki" , "zaclone@shaco.lol" , "lol");
+    userData.FillData("zaki" , "zaclone@shaco.lol" , "lol", "Student");
     this.dbManager.addUser(userData , false);
     */
     var users = this.dbManager.getUsers(false);
