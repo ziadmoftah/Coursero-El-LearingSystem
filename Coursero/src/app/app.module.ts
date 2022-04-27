@@ -6,6 +6,7 @@ import { UserComponent } from './user/user.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { DatabaseManagerComponent } from './database-manager/database-manager.component';
+import { DatabaseService } from './database.service';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import { DatabaseManagerComponent } from './database-manager/database-manager.co
     BrowserModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [DatabaseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
