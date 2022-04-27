@@ -1,0 +1,20 @@
+<app-header></app-header>
+<br>  <br>
+<table>
+    <tr>
+      <th>Course Code</th>
+      <th>Course name</th>
+      <th>Credit Hours</th>
+      <th></th>
+    </tr>
+    <tr *ngFor="let course of user_course ">
+      <td>{{course.code}}</td>  
+      <td>{{course.name}}</td>
+      <td>{{course.hours}}</td>
+      <td><Button type="button" style="background-color: transparent; border-color: transparent;" >View More</Button></td>
+    </tr>
+  </table>
+  <br>  <br>  <br>  <br>
+  <button type="button" style="background-color: gray; text-align: center; margin:0 auto; display:block; width: 200px; height: 40px;">Register Course</button>
+  <br>  <br>  <br>  <br>
+  <app-footer></app-footer>

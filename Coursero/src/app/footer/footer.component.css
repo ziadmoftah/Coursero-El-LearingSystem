@@ -1,0 +1,22 @@
+.footer {
+    width: 100%;
+    background-color: gray;
+    height: 480px;
+    border-color: gray;
+    border-style: outset;
+    border-width: 1px;
+  }
+  .butt{
+    color:black;
+    background-color: transparent;
+    border-color: transparent; 
+  }
+  button[type=button]:hover{
+    text-decoration:underline;
+  }
+  table {
+      width: 1300px;
+  }
+  th, td {
+      padding: 7px;
+  }
