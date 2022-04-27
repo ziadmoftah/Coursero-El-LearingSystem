@@ -26,7 +26,7 @@ export class CoursesComponent implements OnInit {
     var registered = this.dbManager.getRegistered();
     for (let i = 0; i < this.courses.length; i++) {
       for (let j = 0; j < registered.length; j++) {
-        if(this.courses[i].name == registered[j].courseName)
+        if(this.courses[i].name == registered[j].courseName && registered[j].studentName == "Mohamed")  //change Mohamed into global name
         {
           this.coursess.push(this.courses[i]);
         }
