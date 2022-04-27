@@ -19,6 +19,7 @@ import { AdminComponent } from './admin/admin.component';
 
 import { UserService } from './user.service';
 import { AuthenticationService } from './authentication.service';
+import { CourseService } from './course.service';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,7 @@ import { AuthenticationService } from './authentication.service';
     MatTableModule
 
   ],
-  providers: [DatabaseService, UserService, AuthenticationService],
+  providers: [DatabaseService, UserService, AuthenticationService, CourseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

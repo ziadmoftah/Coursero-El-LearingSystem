@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { UserService } from './user.service';
+import { CourseService } from './course.service';
+import { LecturesService } from './lectures.service';
 
 @Injectable({
   providedIn: 'root'
@@ -65,5 +67,48 @@ export class DatabaseService {
     console.log(users);
     return users;
   }
+  addCourse(Course:CourseService){
+    // add users to notverified db
+    let address=this.DBurl+"Courses.json";
+    this.httpClient.post(address , Course).subscribe(response => console.log("Success"));
+  }
+  getCourses():CourseService[]{
+    let address=this.DBurl+"Courses.json";;
+    
 
+    var courses = new Array<CourseService>();
+    this.httpClient.get<CourseService[]>(address)
+    .subscribe((data:CourseService[]) => {
+      Object.values(data).forEach(record => {
+          courses.push(record);
+      })
+    });
+    
+    
+    console.log(address);
+    console.log(courses);
+    return courses;
+  }
+  addLecture(Lecture:LecturesService){
+    // add users to notverified db
+    let address=this.DBurl+"Lectures.json";
+    this.httpClient.post(address , Lecture).subscribe(response => console.log("Success"));
+  }
+  getLectures():LecturesService[]{
+    let address=this.DBurl+"Courses.json";;
+    
+
+    var lectures = new Array<LecturesService>();
+    this.httpClient.get<LecturesService[]>(address)
+    .subscribe((data:LecturesService[]) => {
+      Object.values(data).forEach(record => {
+          lectures.push(record);
+      })
+    });
+    
+    
+    console.log(address);
+    console.log(lectures);
+    return lectures;
+  }
 }
