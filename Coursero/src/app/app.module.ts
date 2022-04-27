@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { MatTableModule } from '@angular/material/table';
 import { AppComponent } from './app.component';
-import { UserComponent } from './user/user.component';
-import { AuthenticationComponent } from './authentication/authentication.component';
+import { HttpClientModule } from '@angular/common/http';
+import { DatabaseService } from './database.service';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { CoursesComponent } from './courses/courses.component';
@@ -16,6 +16,10 @@ import { CalendarComponent } from './calendar/calendar.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import interactionPlugin from '@fullcalendar/interaction';
 import dayGridPlugin from '@fullcalendar/daygrid';
+import { AdminComponent } from './admin/admin.component';
+import { UserService } from './user.service';
+import { AuthenticationService } from './authentication.service';
+import { CourseService } from './course.service';
 FullCalendarModule.registerPlugins([ 
   dayGridPlugin,
   interactionPlugin
@@ -23,8 +27,6 @@ FullCalendarModule.registerPlugins([
 @NgModule({
   declarations: [
     AppComponent,
-    UserComponent,
-    AuthenticationComponent,
     FooterComponent,
     HeaderComponent,
     CoursesComponent,
@@ -33,14 +35,16 @@ FullCalendarModule.registerPlugins([
     SignInComponent,
     SignUpComponent,
     ViewCourseComponent,
+    AdminComponent,
     CalendarComponent
-   
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
+    MatTableModule,
     FullCalendarModule
   ],
-  providers: [],
+  providers: [DatabaseService, UserService, AuthenticationService, CourseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

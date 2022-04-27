@@ -1,26 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 
-@Component({
-  selector: 'app-user',
-  templateUrl: './user.component.html',
-  styleUrls: ['./user.component.css']
+@Injectable({
+  providedIn: 'root'
 })
-export class UserComponent implements OnInit {
+export class UserService {
 
   name:string ;
   account:string;
   password:string;
+  type:string;
+
   constructor() { 
-    this.name = this.password = this.account = "" ; 
+    this.name = this.password = this.account = this.type = "" ; 
   }
 
   ngOnInit(): void {
   }
 
-  FillData(name:string , account:string , password:string){
+  FillData(name:string , account:string , password:string, type:string){
     this.name = name ; 
     this.account = account ; 
     this.password = password ; 
+    this.type = type;
   }
 
   Get_Name():string{
