@@ -52,8 +52,17 @@ export class DatabaseService {
       address = this.DBurl+"notVerified.json";
     }
 
-    let users = new Array<UserComponent>();
-    this.httpClient.get<UserComponent[]>(address).subscribe((data:UserComponent[]) => {users = data});
+    var users = new Array<UserComponent>();
+    this.httpClient.get<UserComponent[]>(address)
+    .subscribe((data:UserComponent[]) => {
+      Object.values(data).forEach(record => {
+          users.push(record);
+      })
+    });
+    
+    
+    console.log(address);
+    console.log(users);
     return users;
   }
 

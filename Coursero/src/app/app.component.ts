@@ -12,9 +12,12 @@ export class AppComponent {
   constructor(private dbManager: DatabaseService){}
 
   databaseTest(){
+    /*
     let userData = new UserComponent();
     userData.FillData("zaki" , "zaclone@shaco.lol" , "lol");
     this.dbManager.addUser(userData , false);
-    
+    */
+    var users = this.dbManager.getUsers(false);
+    console.log(users);
   }
 }
