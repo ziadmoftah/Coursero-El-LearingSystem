@@ -27,11 +27,14 @@ import { AuthenticationService } from './authentication.service';
 const routes: Routes = [
   { path: 'SignIn', component: SignInComponent },
   { path: 'SignUp', component: SignUpComponent },
-  { path: '', redirectTo: '/SignIn', pathMatch: 'full' },
   { path: 'Home', component: HomePageComponent },
   { path: 'Course', component: CoursesComponent },
   { path: 'ViewCourse', component: ViewCourseComponent },
-  { path: 'RegisterCourse', component: RegCoursesComponent }
+  { path: 'RegisterCourse', component: RegCoursesComponent },
+  { path: 'Calender', component: CalendarComponent },
+  { path: 'Admin', component: AdminComponent },
+  { path: '', redirectTo: '/SignIn', pathMatch: 'full' }
+
 ];
 
 import { CourseService } from './course.service';
