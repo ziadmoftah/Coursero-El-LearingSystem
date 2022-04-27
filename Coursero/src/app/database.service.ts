@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { UserComponent } from './user/user.component';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 export class DatabaseService {
 
 
-  DBurl = "https://e-learning-system-c93f6-default-rtdb.europe-west1.firebasedatabase.app/";
+  private DBurl = "https://e-learning-system-c93f6-default-rtdb.europe-west1.firebasedatabase.app/";
   constructor(private httpClient: HttpClient) { }
 
 
@@ -16,7 +17,7 @@ export class DatabaseService {
   }
 
 
-  addUser(user:User, verified:boolean){
+  addUser(user:UserComponent, verified:boolean){
     // add users to notverified db
     let address="";
     if (verified == true){
@@ -24,16 +25,16 @@ export class DatabaseService {
     }else{
       address = this.DBurl+"notVerified.json";
     }
-    this.httpClient.post(address , user);
+    this.httpClient.post(address , user).subscribe(response => console.log("Success"));
   }
 
-  verifyUser(user:User){
+  verifyUser(user:UserComponent){
     // remove user from notVerified db and add to verified users db
     this.deleteUser(user , false);
     this.addUser(user , true)
 
   }
-  deleteUser(user:User, verified:boolean){
+  deleteUser(user:UserComponent, verified:boolean){
     //if verified remove from verified db and if not remove from not verified
     if (verified == true){
       const address = this.DBurl+"Verified.json";
@@ -43,7 +44,7 @@ export class DatabaseService {
 
     // remove lesa ha3melha
   }
-  getUsers(verified:boolean):User[]{
+  getUsers(verified:boolean):UserComponent[]{
     let address="";
     if (verified == true){
       address = this.DBurl+"Verified.json";
@@ -51,21 +52,9 @@ export class DatabaseService {
       address = this.DBurl+"notVerified.json";
     }
 
-    let users = new Array<User>();
-    this.httpClient.get<User[]>(address).subscribe((data:User[]) => {users = data});
+    let users = new Array<UserComponent>();
+    this.httpClient.get<UserComponent[]>(address).subscribe((data:UserComponent[]) => {users = data});
     return users;
   }
 
-}
-
-class User{
-  username:string;
-  password:string;
-  role:string;
-
-  constructor(un:string , pw:string , role:string){
-    this.username = un;
-    this.password = pw;
-    this.role = role
-  }
 }
