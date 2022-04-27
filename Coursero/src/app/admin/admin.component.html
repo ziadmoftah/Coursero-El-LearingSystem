@@ -1,0 +1,111 @@
+
+<app-header></app-header>
+<div class="row">
+    <div class="column1">
+        <h1 style="text-align: center;">Student</h1><hr>
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+  
+            <!-- Name Column -->
+             <ng-container matColumnDef="name">
+               <th mat-header-cell *matHeaderCellDef>Name</th>
+               <td mat-cell *matCellDef="let element">{{element.name}}</td>
+             </ng-container>
+          
+             <!-- mail Column -->
+             <ng-container matColumnDef="mail">
+               <th mat-header-cell *matHeaderCellDef>Mail</th>
+               <td mat-cell *matCellDef="let element">{{element.mail}}</td>
+             </ng-container>
+           
+             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+             <tr
+                 mat-row
+                 (click)="clickedRows.add(row)"
+                 [class.demo-row-is-clicked]="clickedRows.has(row)"
+                 *matRowDef="let row; columns: displayedColumns;"
+             ></tr>
+           </table>
+           <hr><br>
+           <button type="button" id="delete1" style="margin:0 auto; display:block;">Delete</button>
+           <br>
+    </div>
+    <div class="column2">
+        <h1 style="text-align: center;">Faculty</h1><hr>
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+  
+            <!-- Name Column -->
+             <ng-container matColumnDef="name">
+               <th mat-header-cell *matHeaderCellDef>Name</th>
+               <td mat-cell *matCellDef="let element">{{element.name}}</td>
+             </ng-container>          
+             <!-- mail Column -->
+             <ng-container matColumnDef="mail">
+               <th mat-header-cell *matHeaderCellDef>Mail</th>
+               <td mat-cell *matCellDef="let element">{{element.mail}}</td>
+             </ng-container>
+           
+             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+             <tr
+                 mat-row
+                 (click)="clickedRows.add(row)"
+                 [class.demo-row-is-clicked]="clickedRows.has(row)"
+                 *matRowDef="let row; columns: displayedColumns;"
+             ></tr>
+           </table>
+           <hr><br>
+           <button type="button" id="delete2" style="margin:0 auto; display:block;">Delete</button>
+           <br>
+    </div>
+    <div class="column3">
+        <h1 style="text-align: center;">New Accounts</h1><hr>
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+  
+            <!-- Name Column -->
+             <ng-container matColumnDef="name">
+               <th mat-header-cell *matHeaderCellDef>Name</th>
+               <td mat-cell *matCellDef="let element">{{element.name}}</td>
+             </ng-container>
+          
+             <!-- mail Column -->
+             <ng-container matColumnDef="mail">
+               <th mat-header-cell *matHeaderCellDef>Mail</th>
+               <td mat-cell *matCellDef="let element">{{element.mail}}</td>
+             </ng-container>
+           
+             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+             <tr
+                 mat-row
+                 (click)="clickedRows.add(row)"
+                 [class.demo-row-is-clicked]="clickedRows.has(row)"
+                 *matRowDef="let row; columns: displayedColumns;"
+             ></tr>
+           </table>
+           <hr><br>
+           <button type="button" id="approve" style="margin:0 auto; display:block;">Approve</button> <br>
+           <button type="button" id="delete3" style="margin:0 auto; display:block;">Delete</button>
+           <br>
+    </div>
+  </div>
+
+
+
+
+  
+  <!--
+  <div>
+    <h3>
+      Click Log
+    </h3>
+  </div>
+
+  
+  <div *ngIf="!clickedRows.size">
+    Clicked rows will be logged here
+  </div>
+
+  <ul>
+    <li *ngFor="let clickedRow of clickedRows">
+      Clicked on {{clickedRow.name}}
+    </li>
+  </ul>
+  -->

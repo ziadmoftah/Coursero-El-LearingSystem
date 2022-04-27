@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 
+import { MatTableModule } from '@angular/material/table';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DatabaseService } from './database.service';
@@ -13,6 +14,11 @@ import { RegCoursesComponent } from './reg-courses/reg-courses.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { ViewCourseComponent } from './view-course/view-course.component';
+import { CalendarComponent } from './calendar/calendar.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
+import interactionPlugin from '@fullcalendar/interaction' ;
+import dayGridPlugin from '@fullcalendar/daygrid' ;
+import { AdminComponent } from './admin/admin.component';
 import { UserService } from './user.service';
 import { AuthenticationService } from './authentication.service';
 
@@ -28,6 +34,11 @@ const routes: Routes = [
   { path: 'RegisterCourse', component: RegCoursesComponent }
 ];
 
+import { CourseService } from './course.service';
+FullCalendarModule.registerPlugins([ 
+  dayGridPlugin,
+  interactionPlugin
+]);
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,15 +49,18 @@ const routes: Routes = [
     RegCoursesComponent,
     SignInComponent,
     SignUpComponent,
-    ViewCourseComponent
-
+    ViewCourseComponent,
+    AdminComponent,
+    CalendarComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    MatTableModule,
+    FullCalendarModule
   ],
-  providers: [DatabaseService, UserService, AuthenticationService],
+  providers: [DatabaseService, UserService, AuthenticationService, CourseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

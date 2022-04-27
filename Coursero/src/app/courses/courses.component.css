@@ -12,3 +12,7 @@ td {
 button[type=button]:hover{
     text-decoration:underline;
 }
+body {
+    background-image: url("gray.jpg");
+   
+   }

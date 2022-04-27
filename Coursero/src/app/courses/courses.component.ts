@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { CourseService } from '../course.service';
+import { DatabaseService } from '../database.service';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-courses',
@@ -9,17 +12,11 @@ import { Component, OnInit } from '@angular/core';
 
 export class CoursesComponent implements OnInit {
 
-  user_course: Array<{code : string,name: string, hours: number} > = [
+  courses:CourseService[];
 
-    {code : 'DFEDF' ,hours: 1, name:'Superman'},
-    {code : 'DTYRT' ,hours: 2, name:'Batman'},
-    {code : 'NHDFC' ,hours: 5, name:'BatGirl'},
-    {code : 'IYTOY' ,hours: 3, name:'Robin'},
-    {code : 'WPGRR' ,hours: 4, name:'Flash'}
- 
-  ];
-
-  constructor() { }
+  constructor(private dbManager: DatabaseService) {  
+    this.courses = this.dbManager.getCourses();
+  }
 
   ngOnInit(): void {
   }
