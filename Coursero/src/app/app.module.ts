@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { MatTableModule } from '@angular/material/table';
+     
 
 import { AppComponent } from './app.component';
 import { UserComponent } from './user/user.component';
@@ -12,6 +14,7 @@ import { RegCoursesComponent } from './reg-courses/reg-courses.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { ViewCourseComponent } from './view-course/view-course.component';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -25,11 +28,14 @@ import { ViewCourseComponent } from './view-course/view-course.component';
     RegCoursesComponent,
     SignInComponent,
     SignUpComponent,
-    ViewCourseComponent
+    ViewCourseComponent,
+    AdminComponent
   ],
   imports: [
-    BrowserModule
-  ],
+    BrowserModule,
+    MatTableModule
+
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

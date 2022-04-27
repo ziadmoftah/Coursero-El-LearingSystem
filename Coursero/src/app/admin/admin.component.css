@@ -1,0 +1,36 @@
+.demo-table {
+    width: 100%;
+  }
+  
+  .mat-row .mat-cell {
+    border-bottom: 1px solid transparent;
+    border-top: 1px solid transparent;
+    cursor: pointer;
+  }
+  
+  .mat-row:hover .mat-cell {
+    border-color: currentColor;
+  }
+  
+  .demo-row-is-clicked {
+    font-weight: bold;
+  }
+
+  .column1 {
+    float: left;
+    width: 33%;
+    background-color: #D7D7D7;
+    height: fit-content;
+  }
+  .column2 {
+    float: left;
+    width: 33%;
+    background-color: #38A2A3;
+    height: fit-content;
+  }
+  .column3 {
+    float: left;
+    width: 33%;
+    background-color: slateblue;
+    height: fit-content;
+  }
