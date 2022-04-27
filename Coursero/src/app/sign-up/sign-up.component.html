@@ -16,19 +16,21 @@
         <form action="/action_page.php">
           <br><br>
 
-          <input type="radio" id="faculty" name="type" value="Faculty">
-          <label for="faculty">Faculty.</label><br>
-          <input type="radio" id="stud" name="type" value="Student">
-          <label for="stud">Student.</label><br><br>
+          <input type="radio" id="faculty" name="type" value="Faculty" checked #faculty>
+          <label for="faculty">Faculty</label><br>
+          <input type="radio" id="stud" name="type" value="Student" #student>
+          <label for="stud">Student</label><br><br>
           
-          <label for="name">Name :</label><br>
-          <input style = "width: 250px;"type="text" id="name" name="name"><br><br>
-          <label for="email">Email :</label><br>
-          <input style = "width: 250px;"type="email" id="email" name="email"><br><br>
-          <label for="pass">Password :</label><br>
-          <input style="width: 250px;" type="password" id="pass" name="password" minlength="8" required><br><br><br><br>
+          <label for="name" >Name</label><br>
+          <input style = "width: 250px;"type="text" id="name" name="name" #name><br><br>
+          <label for="email" >Email</label><br>
+          <input style = "width: 250px;"type="email" id="email" name="email" #account><br><br>
+          <label for="pass" >Password</label><br>
+          <input style="width: 250px;" type="password" id="pass" name="password" minlength="8" required #password><br><br>
+          <label for="valid" style="color: red; text-align: center; font-size:small;">{{errorMessage}}</label><br><br>
 
-          <input style= "margin-left: 15%; background-color: #38A2A3; color: white;border-color: white; border-radius: 20px; border-color: gray; border-style: solid; border-width: 1px;" type="submit" value="Sign Up">
+          <input style= "margin-left: 15%; background-color: #38A2A3; color: white;border-color: white; border-radius: 20px; border-color: gray; border-style: solid;
+                        border-width: 1px;" type="submit" value="Sign Up" (click)="Register(name.value , account.value , password.value , student.checked)">
        </form>
       </div>
     </div>
