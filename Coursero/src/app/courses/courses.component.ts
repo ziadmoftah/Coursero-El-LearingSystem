@@ -13,12 +13,27 @@ import { UserService } from '../user.service';
 export class CoursesComponent implements OnInit {
 
   courses:CourseService[];
+  coursess:CourseService[];
 
-  constructor(private dbManager: DatabaseService) {  
+  constructor(private dbManager: DatabaseService) {
     this.courses = this.dbManager.getCourses();
+    this.coursess = new Array<CourseService>();
   }
 
   ngOnInit(): void {
+  }
+  fillcourses()
+  {
+    var registered = this.dbManager.getRegistered();
+    for (let i = 0; i < this.courses.length; i++) {
+      for (let j = 0; j < registered.length; j++) {
+        if(this.courses[i].name == registered[j].courseName)
+        {
+          this.coursess.push(this.courses[i]);
+        }
+      }
+    }
+    
   }
 
 }

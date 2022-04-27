@@ -25,9 +25,12 @@ export class AppComponent {
     lectureData.FillData("Lecture 1","Maths",date);
     this.dbManager.addLecture(lectureData);
     */
+    
+    //this.dbManager.registerCourse("Math","Mohamed");
     var users = this.dbManager.getUsers(false);
     var courses = this.dbManager.getCourses();
     var lectures = this.dbManager.getLectures();
-    console.log(lectures);
+    var registered = this.dbManager.getRegistered();
+    console.log(registered);
   }
 }
