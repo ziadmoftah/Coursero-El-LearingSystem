@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { DatabaseService } from './database.service';
-import { UserComponent } from './user/user.component';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
