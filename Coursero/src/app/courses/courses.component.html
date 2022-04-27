@@ -8,10 +8,10 @@
       <th>Credit Hours</th>
       <th></th>
     </tr>
-    <tr *ngFor="let course of user_course ">
+    <tr *ngFor="let course of courses ">
       <td>{{course.code}}</td>  
       <td>{{course.name}}</td>
-      <td>{{course.hours}}</td>
+      <td>{{course.creditHour}}</td>
       <td><Button type="button" style="background-color: transparent; border-color: transparent;" >View More</Button></td>
     </tr>
   </table>
