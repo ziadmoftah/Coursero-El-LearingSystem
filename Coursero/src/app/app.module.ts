@@ -20,6 +20,7 @@ import { AdminComponent } from './admin/admin.component';
 import { UserService } from './user.service';
 import { AuthenticationService } from './authentication.service';
 import { CourseService } from './course.service';
+import { FormsModule} from '@angular/forms'
 FullCalendarModule.registerPlugins([ 
   dayGridPlugin,
   interactionPlugin
@@ -42,7 +43,8 @@ FullCalendarModule.registerPlugins([
     BrowserModule,
     HttpClientModule,
     MatTableModule,
-    FullCalendarModule
+    FullCalendarModule,
+    FormsModule
   ],
   providers: [DatabaseService, UserService, AuthenticationService, CourseService],
   bootstrap: [AppComponent]

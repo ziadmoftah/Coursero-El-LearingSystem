@@ -117,6 +117,7 @@ export class DatabaseService {
     let address=this.DBurl+"RegisteredCourses.json";
     this.httpClient.post(address , temp).subscribe(response => console.log("Success"));
   }
+
   getRegistered():{courseName:string,studentName:string}[]{
     let address=this.DBurl+"RegisteredCourses.json";
 
@@ -133,4 +134,5 @@ export class DatabaseService {
     console.log(courses);
     return courses;
   }
+
 }

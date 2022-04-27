@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CourseService } from '../course.service';
 import { DatabaseService } from '../database.service';
-import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-courses',
