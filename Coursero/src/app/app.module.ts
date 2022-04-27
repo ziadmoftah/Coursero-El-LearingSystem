@@ -12,7 +12,14 @@ import { RegCoursesComponent } from './reg-courses/reg-courses.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { ViewCourseComponent } from './view-course/view-course.component';
-
+import { CalendarComponent } from './calendar/calendar.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
+import interactionPlugin from '@fullcalendar/interaction';
+import dayGridPlugin from '@fullcalendar/daygrid';
+FullCalendarModule.registerPlugins([ 
+  dayGridPlugin,
+  interactionPlugin
+]);
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,10 +32,13 @@ import { ViewCourseComponent } from './view-course/view-course.component';
     RegCoursesComponent,
     SignInComponent,
     SignUpComponent,
-    ViewCourseComponent
+    ViewCourseComponent,
+    CalendarComponent
+   
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FullCalendarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
