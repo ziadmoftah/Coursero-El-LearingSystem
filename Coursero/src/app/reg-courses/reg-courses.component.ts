@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CourseService } from '../course.service';
+import { DatabaseService } from '../database.service';
 
 @Component({
   selector: 'app-reg-courses',
@@ -7,19 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegCoursesComponent implements OnInit {
 
-  all_course: Array<{code : string,name: string, hours: number} > = [
+  courses:CourseService[];
+  username : string = "";
 
-    {code : 'DFEDF' ,hours: 1, name:'Superman'},
-    {code : 'DTYRT' ,hours: 2, name:'Batman'},
-    {code : 'NHDFC' ,hours: 5, name:'BatGirl'},
-    {code : 'IYTOY' ,hours: 3, name:'Robin'},
-    {code : 'WPGRR' ,hours: 4, name:'Flash'}
- 
-  ];
-
-  constructor() { }
+  constructor(private dbManager: DatabaseService) {  
+    this.courses = this.dbManager.getCourses();
+  }
 
   ngOnInit(): void {
+  }
+  Reg (Coursename : string){
+    this.dbManager.registerCourse(Coursename,this.username)
   }
 
 }

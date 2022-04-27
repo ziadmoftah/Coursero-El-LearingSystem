@@ -7,23 +7,21 @@
       <th>Lecture Name</th>
       <th>Lecture Date</th>
     </tr>
-    <tr *ngFor="let lecs of course_lecs ">
-      <td>{{lecs.name}}</td>
-      <td>{{lecs.date}}</td>
+    <tr *ngFor="let lec of lecs ">
+      <td>{{lec.name}}</td>
+      <td>{{lec.date}}</td>
     </tr>
   </table>
-  <br>  <br>  <br>  <br>
-  
+  <br>  <br>  <br>  <br>  
   <hr>
-  
   <br>  <br> 
 <div class="courseform">
   <form > 
     <label for="lec-name">Lecture Name :</label>
-    <input type="text" id="LectureName" name="LectureName" value=""><br><br>
+    <input type="text" [(ngModel)]="lec_name" id="LectureName" name="LectureName" ><br><br>
     <label for="lec-date">Lecture Date :</label>
-    <input type="date" id="LectureDate" name="LectureDate" value=""><br><br>
-    <input type="submit" value="Add Lecture">
+    <input type="date" [(ngModel)]="lec_name" id="LectureDate" name="LectureDate" ><br><br>
+    <input type="submit" (click)="add_lec()"value="Add Lecture">
   </form>
 </div>
 

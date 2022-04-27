@@ -111,4 +111,10 @@ export class DatabaseService {
     console.log(lectures);
     return lectures;
   }
+  registerCourse(courseName:string, studentName:string){
+    // add users to notverified db
+    let temp = {courseName,studentName}
+    let address=this.DBurl+"RegisteredCourses.json";
+    this.httpClient.post(address , temp).subscribe(response => console.log("Success"));
+  }
 }

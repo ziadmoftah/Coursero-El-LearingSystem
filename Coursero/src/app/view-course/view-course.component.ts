@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { LecturesService } from '../lectures.service';
+import { DatabaseService } from '../database.service';
 
 @Component({
   selector: 'app-view-course',
@@ -7,18 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewCourseComponent implements OnInit {
 
-  course_lecs: Array<{date : string,name: string} > = [
+  lecs :LecturesService[];
 
-    {date : '20/05/2021', name:'Superman'},
-    {date : '20/05/2021', name:'Batman'},
-    {date : '20/05/2021', name:'BatGirl'},
-    {date : '20/05/2021', name:'Robin'},
-    {date : '20/05/2021', name:'Flash'}
- 
-  ];
-  constructor() { }
+  lec_name :string = "";
+  lec_date :Date;
+  lec_added :LecturesService;
+
+  constructor(private dbManager: DatabaseService) {  
+    this.lecs = this.dbManager.getLectures();
+    this.lec_date = new Date();
+    this.lec_added = new LecturesService ();
+  }
 
   ngOnInit(): void {
   }
 
+  add_lec (){
+    this.lec_added.FillData (this.lec_name ,"Course",this.lec_date);
+   this.dbManager.addLecture(this.lec_added);  
+  }
 }
