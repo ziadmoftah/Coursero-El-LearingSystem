@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -9,7 +10,8 @@ import { AuthenticationService } from '../authentication.service';
 export class SignUpComponent implements OnInit {
   private authentication:AuthenticationService;
   errorMessage:string;
-  constructor() {
+  
+  constructor(private router: Router) {
     this.authentication = new AuthenticationService();
     this.errorMessage = "";
    }
@@ -22,6 +24,9 @@ export class SignUpComponent implements OnInit {
     if ( s ) type = "S" ;
     let ret :Boolean =  this.authentication.Register(name , account , password , type);
     this.errorMessage = this.authentication.getErrorMessage();
+    if (ret) {
+      this.router.navigate(['/Home']);
+    }
     return ret;
   }
 

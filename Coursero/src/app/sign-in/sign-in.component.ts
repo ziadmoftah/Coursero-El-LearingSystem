@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-in',
@@ -10,7 +11,7 @@ export class SignInComponent implements OnInit {
 
   private authentication:AuthenticationService;
   errorMessage:string;
-  constructor() {
+  constructor(private router: Router) {
     this.authentication = new AuthenticationService();
     this.errorMessage = "";
    }
@@ -21,6 +22,8 @@ export class SignInComponent implements OnInit {
   {
     let ret :Boolean =  this.authentication.Login(account , password);
     this.errorMessage = this.authentication.getErrorMessage();
+    if (ret)
+      this.router.navigate(['/Home']);
     return ret;
   }
   
