@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { UserService } from './user.service';
 import { DatabaseService } from './database.service';
-import { inject } from '@angular/core';
+import { UserDetailsService } from './user-details.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +11,11 @@ export class AuthenticationService {
   Users:UserService[] ;
   errorMessage:string = "" ;
   constructor(private dbManager: DatabaseService) { 
+    this.Users = [];
     this.Users = dbManager.getUsers(false);
+    //let user : UserService = new UserService();
+    //user.FillData("mohamed","mohamed","zaki","S");
+    //this.Users.push(user);
   }
 
   ngOnInit(): void {
@@ -32,8 +36,11 @@ export class AuthenticationService {
 
     let newUser:UserService = new UserService() ;
     newUser.FillData(name , account , password, type ) ;
+    this.dbManager.addUser(newUser,false);
     this.Users.push(newUser);
     this.errorMessage = "User Registered Successfully" ;
+    UserDetailsService.userName = newUser.Get_Account();
+    UserDetailsService.type = newUser.type;
     return true ; 
   }
 
@@ -42,7 +49,9 @@ export class AuthenticationService {
       this.errorMessage = "Please Make Sure You Have Filled All The Fields" ;
       return false;
     }
+
     let isfound:boolean = false;
+    
     for (let i = 0; i < this.Users.length; i++) {
       let currenUser:UserService = this.Users[i] ;
       if ( currenUser.Get_Account() == account ){
@@ -54,6 +63,8 @@ export class AuthenticationService {
       }
       if (currenUser.Get_Account() == account && currenUser.Get_Password() == password){
         this.errorMessage = "Valid User" ;
+        UserDetailsService.userName = currenUser.Get_Account();
+        UserDetailsService.type = currenUser.type;
         return true;
       }
       

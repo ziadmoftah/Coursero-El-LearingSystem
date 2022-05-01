@@ -58,13 +58,15 @@ export class DatabaseService {
     this.httpClient.get<UserService[]>(address)
     .subscribe((data:UserService[]) => {
       Object.values(data).forEach(record => {
-          users.push(record);
+        var user:UserService = new UserService();
+        user.account = record.account;
+        user.name = record.name;
+        user.password = record.password;
+        user.type = record.type;
+        users.push(user);
       })
     });
     
-    
-    console.log(address);
-    console.log(users);
     return users;
   }
   addCourse(Course:CourseService){
@@ -77,16 +79,19 @@ export class DatabaseService {
     
 
     var courses = new Array<CourseService>();
+
     this.httpClient.get<CourseService[]>(address)
     .subscribe((data:CourseService[]) => {
       Object.values(data).forEach(record => {
-          courses.push(record);
+          var course:CourseService = new CourseService();
+          course.code = record.code;
+          course.creditHour = record.creditHour;
+          course.faculty = record.faculty;
+          course.name = record.name;
+          courses.push(course);
       })
     });
     
-    
-    console.log(address);
-    console.log(courses);
     return courses;
   }
   addLecture(Lecture:LecturesService){
@@ -102,13 +107,16 @@ export class DatabaseService {
     this.httpClient.get<LecturesService[]>(address)
     .subscribe((data:LecturesService[]) => {
       Object.values(data).forEach(record => {
-          lectures.push(record);
+        var lecture:LecturesService = new LecturesService();
+        lecture.course = record.course;
+        lecture.date = record.date;
+
+        lecture.name = record.name;
+        lectures.push(lecture);
+
       })
     });
     
-    
-    console.log(address);
-    console.log(lectures);
     return lectures;
   }
   registerCourse(courseName:string, studentName:string){
@@ -128,10 +136,7 @@ export class DatabaseService {
           courses.push(record);
       })
     });
-    
-    
-    console.log(address);
-    console.log(courses);
+
     return courses;
   }
 
