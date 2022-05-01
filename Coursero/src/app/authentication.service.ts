@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { UserService } from './user.service';
+import { DatabaseService } from './database.service';
+import { inject } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -8,11 +10,8 @@ export class AuthenticationService {
 
   Users:UserService[] ;
   errorMessage:string = "" ;
-  constructor() { 
-    this.Users = [] ; 
-    let user : UserService = new UserService();
-    user.FillData("mohamed","mohamed","zaki","S");
-    this.Users.push(user);
+  constructor(private dbManager: DatabaseService) { 
+    this.Users = dbManager.getUsers(false);
   }
 
   ngOnInit(): void {

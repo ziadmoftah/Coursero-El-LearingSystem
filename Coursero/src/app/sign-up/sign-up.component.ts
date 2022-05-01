@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../authentication.service';
 import { Router } from '@angular/router';
+import { DatabaseService } from '../database.service';
+
 
 @Component({
   selector: 'app-sign-up',
@@ -10,9 +12,11 @@ import { Router } from '@angular/router';
 export class SignUpComponent implements OnInit {
   private authentication:AuthenticationService;
   errorMessage:string;
+
   
-  constructor(private router: Router) {
-    this.authentication = new AuthenticationService();
+  constructor(private router: Router,private dbManager: DatabaseService) {
+    this.authentication = new AuthenticationService(dbManager);
+
     this.errorMessage = "";
    }
 
