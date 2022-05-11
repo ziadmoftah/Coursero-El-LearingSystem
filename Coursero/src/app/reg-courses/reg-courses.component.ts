@@ -11,7 +11,9 @@ import { UserDetailsService } from '../user-details.service';
 export class RegCoursesComponent implements OnInit {
 
   coursess:CourseService[];
-
+  course_name : string = "";
+  course_code : string = "";
+  course_hour : string = "";
 
   constructor(private dbManager: DatabaseService) {  
     this.coursess = new Array<CourseService>();
@@ -30,20 +32,20 @@ export class RegCoursesComponent implements OnInit {
     UserDetailsService.registered.push(temp);
   }
 
-  addCourse (Coursename : string, CourseCode: string, CourseHour:string){
+  addCourse (){
 
     var course:CourseService = new CourseService();
-    course.FillData(Coursename, CourseCode,UserDetailsService.userName,CourseHour);
+    course.FillData(this.course_name, this.course_code,UserDetailsService.userName,this.course_hour);
     UserDetailsService.courses.push(course);
     this.dbManager.addCourse(course);
-
+    
+    this.course_name = "";
+    this.course_hour = "";
+    this.course_code = "";
   }
 
   fillcourses()
   {
-
-
-
 
     let found:boolean;
     for (let i = 0; i < UserDetailsService.courses.length; i++) {
