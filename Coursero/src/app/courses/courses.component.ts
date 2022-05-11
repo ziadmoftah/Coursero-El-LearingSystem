@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CourseService } from '../course.service';
 import { DatabaseService } from '../database.service';
+import { UserDetailsService } from '../user-details.service';
 
 @Component({
   selector: 'app-courses',
@@ -11,24 +12,31 @@ import { DatabaseService } from '../database.service';
 
 export class CoursesComponent implements OnInit {
 
-  courses:CourseService[];
+  
   coursess:CourseService[];
+  
 
-  constructor(private dbManager: DatabaseService) {
-    this.courses = this.dbManager.getCourses();
+  constructor() {
+    
     this.coursess = new Array<CourseService>();
+    this.fillcourses();
   }
 
   ngOnInit(): void {
+    
   }
+
   fillcourses()
   {
-    var registered = this.dbManager.getRegistered();
-    for (let i = 0; i < this.courses.length; i++) {
-      for (let j = 0; j < registered.length; j++) {
-        if(this.courses[i].name == registered[j].courseName && registered[j].studentName == "Mohamed")  //change Mohamed into global name
+
+    console.log( UserDetailsService.courses);
+    console.log( UserDetailsService.registered);
+
+    for (let i = 0; i < UserDetailsService.courses.length; i++) {
+      for (let j = 0; j < UserDetailsService.registered.length; j++) {
+        if(UserDetailsService.courses[i].name == UserDetailsService.registered[j].courseName && UserDetailsService.registered[j].studentName == UserDetailsService.userName) 
         {
-          this.coursess.push(this.courses[i]);
+          this.coursess.push(UserDetailsService.courses[i]);
         }
       }
     }

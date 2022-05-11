@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { UserService } from './user.service';
 import { CourseService } from './course.service';
 import { LecturesService } from './lectures.service';
+import { CoursesComponent } from './courses/courses.component';
 
 @Injectable({
   providedIn: 'root'

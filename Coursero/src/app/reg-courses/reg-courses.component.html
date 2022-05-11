@@ -8,7 +8,7 @@
       <th>Credit Hours</th>
       <th></th>
     </tr>
-    <tr *ngFor="let course of courses ">
+    <tr *ngFor="let course of coursess ">
       <td>{{course.code}}</td>  
       <td>{{course.name}}</td>
       <td>{{course.creditHour}}</td>
@@ -21,12 +21,12 @@
 <div class="courseform">
   <form > 
     <label for="course-code">Course Code :</label>
-    <input type="text" id="CourseCode" name="CourseCode" value=""><br><br>
+    <input type="text" id="CourseCode" name="CourseCode" value="" #CourseName><br><br>
     <label for="course-name">Course Name :</label>
-    <input type="text" id="CourseName" name="CourseName" value=""><br><br>
+    <input type="text" id="CourseName" name="CourseName" value="" #CourseCode><br><br>
     <label for="course-hours">Course Credit Hours :</label>
-    <input type="text" id="CourseHour" name="CourseHour" value=""><br><br>
-    <input type="submit" value="Add Course">
+    <input type="text" id="CourseHour" name="CourseHour" value="" #CourseHour><br><br>
+    <input type="submit" (click)="addCourse(CourseName.value,CourseCode.value,CourseHour.value)" value="Add Course">
   </form>
 </div>
 <br>  <br>  <br>  <br> 

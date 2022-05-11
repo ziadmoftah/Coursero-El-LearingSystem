@@ -30,7 +30,5 @@ export class AppComponent {
     var users = this.dbManager.getUsers(false);
     var courses = this.dbManager.getCourses();
     var lectures = this.dbManager.getLectures();
-    var registered = this.dbManager.getRegistered();
-    console.log(registered);
   }
 }
