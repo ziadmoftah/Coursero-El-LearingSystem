@@ -69,6 +69,9 @@ export class AuthenticationService {
         UserDetailsService.type = currenUser.type;
         UserDetailsService.courses = this.dbManager.getCourses();
         UserDetailsService.registered = this.dbManager.getRegistered();
+        //UserDetailsService.verifiedUsers = this.dbManager.getUsers(true);
+        UserDetailsService.notVerified = this.dbManager.getUsers(false);
+
         return true;
       }
       

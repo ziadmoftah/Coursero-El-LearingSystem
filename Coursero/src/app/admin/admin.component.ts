@@ -1,6 +1,8 @@
+import { not } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { DatabaseService } from '../database.service';
 import { UserService } from '../user.service';
+import { UserDetailsService } from '../user-details.service';
 
 export interface PeriodicElement {
   name: string;
@@ -20,9 +22,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   {name: 'Neon', mail: 'Ne@gmail.com'},
 ];
 
-var students = new Array<UserService>();
-var faculty = new Array<UserService>(); 
-var notVerified = new Array<UserService>(); 
+
 
 @Component({
   selector: 'app-admin',
@@ -31,9 +31,9 @@ var notVerified = new Array<UserService>();
 })
 export class AdminComponent implements OnInit {
 
-  displayedColumns: string[] = ['name', 'mail'];
-  dataSource = notVerified;
-  clickedRows = new Set<PeriodicElement>();
+  displayedColumns: string[] = ['name', 'account'];
+  dataSource = UserDetailsService.notVerified;
+  clickedRows = new Set<UserService>();
   constructor(private dbManager: DatabaseService) { }
 
   ngOnInit(): void {
@@ -46,10 +46,7 @@ export class AdminComponent implements OnInit {
           faculty.push(user);
         }
     })*/
-    notVerified = this.dbManager.getUsers(false);
-    console.log(notVerified);
-
-
+    console.log(UserDetailsService.notVerified);
   }
 
 }

@@ -58,7 +58,7 @@
     </div>
     <div class="column3">
         <h1 style="text-align: center;">New Accounts</h1><hr>
-        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table" #lol>
   
             <!-- Name Column -->
              <ng-container matColumnDef="name">
@@ -67,9 +67,9 @@
              </ng-container>
           
              <!-- mail Column -->
-             <ng-container matColumnDef="mail">
+             <ng-container matColumnDef="account">
                <th mat-header-cell *matHeaderCellDef>Mail</th>
-               <td mat-cell *matCellDef="let element">{{element.account}}</td>
+               <td mat-cell *matCellDef="let element">{{element.Get_Account()}}</td>
              </ng-container>
            
              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
