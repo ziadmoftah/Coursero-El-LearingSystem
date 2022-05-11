@@ -11,17 +11,28 @@ import { UserDetailsService } from '../user-details.service';
 export class RegCoursesComponent implements OnInit {
 
   coursess:CourseService[];
+
   course_name : string = "";
   course_code : string = "";
   course_hour : string = "";
 
+  type:string;
+
+
   constructor(private dbManager: DatabaseService) {  
     this.coursess = new Array<CourseService>();
     this.fillcourses();
+    this.type = UserDetailsService.type;
   }
 
   ngOnInit(): void {
   }
+
+  checkType():Boolean
+  {
+    return this.type == "F";
+  }
+
   Reg (Coursename : string){
     this.dbManager.registerCourse(Coursename,UserDetailsService.userName);
     var temp = { 
@@ -42,6 +53,13 @@ export class RegCoursesComponent implements OnInit {
     this.course_name = "";
     this.course_hour = "";
     this.course_code = "";
+    this.dbManager.registerCourse(this.course_name,UserDetailsService.userName);
+    var temp = { 
+      courseName:this.course_name, 
+      studentName:UserDetailsService.userName
+    }; 
+    UserDetailsService.registered.push(temp);
+
   }
 
   fillcourses()

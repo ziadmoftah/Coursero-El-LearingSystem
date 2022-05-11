@@ -12,13 +12,13 @@
       <td>{{course.code}}</td>  
       <td>{{course.name}}</td>
       <td>{{course.creditHour}}</td>
-      <td><Button type="button"  (click)="Reg(course.name)" style="background-color: transparent; border-color: transparent; color: blue;" >Register Course</Button></td>
+      <td><Button type="button" *ngIf="(!checkType())"  (click)="Reg(course.name)" style="background-color: transparent; border-color: transparent; color: blue;" >Register Course</Button></td>
     </tr>
   </table>
   <br>  <br>  <br>  <br>
   <hr>
   <br>  <br>
-<div class="courseform">
+<div class="courseform" *ngIf="(checkType())">
   <form > 
     <label for="course-code">Course Code :</label>
     <input type="text" [(ngModel)]="course_name"  name="CourseName"><br><br>

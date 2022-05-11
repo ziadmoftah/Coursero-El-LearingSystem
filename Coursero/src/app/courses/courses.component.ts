@@ -26,6 +26,10 @@ export class CoursesComponent implements OnInit {
     
   }
 
+  setCourse(courseName:string)
+  {
+    UserDetailsService.course = courseName; 
+  }
   fillcourses()
   {
 

@@ -28,8 +28,9 @@ export class SignInComponent implements OnInit {
   {
     let ret :Boolean =  this.authentication.Login(account , password);
     this.errorMessage = this.authentication.getErrorMessage();
-    if (ret)
+    if (ret){
       this.router.navigate(['/Home']);
+    }
     return ret;
   }
   

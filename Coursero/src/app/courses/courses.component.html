@@ -12,7 +12,7 @@
       <td>{{course.code}}</td>  
       <td>{{course.name}}</td>
       <td>{{course.creditHour}}</td>
-      <td><Button type="button" style="background-color: transparent; border-color: transparent;" routerLink="/ViewCourse">View More</Button></td>
+      <td><Button type="button" (click)="setCourse(course.name)" style="background-color: transparent; border-color: transparent;" routerLink="/ViewCourse">View More</Button></td>
     </tr>
   </table>
   <br>  <br>  <br>  <br>
