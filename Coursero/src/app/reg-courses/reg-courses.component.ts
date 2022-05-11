@@ -50,16 +50,17 @@ export class RegCoursesComponent implements OnInit {
     UserDetailsService.courses.push(course);
     this.dbManager.addCourse(course);
     
-    this.course_name = "";
-    this.course_hour = "";
-    this.course_code = "";
+    
     this.dbManager.registerCourse(this.course_name,UserDetailsService.userName);
     var temp = { 
       courseName:this.course_name, 
       studentName:UserDetailsService.userName
     }; 
     UserDetailsService.registered.push(temp);
-
+    this.course_name = "";
+    this.course_hour = "";
+    this.course_code = "";
+    
   }
 
   fillcourses()

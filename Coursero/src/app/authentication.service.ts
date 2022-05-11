@@ -43,6 +43,8 @@ export class AuthenticationService {
     UserDetailsService.type = newUser.type;
     UserDetailsService.courses = this.dbManager.getCourses();
     UserDetailsService.registered = this.dbManager.getRegistered();
+    UserDetailsService.lectures = this.dbManager.getLectures();
+    UserDetailsService.registeredlecs = this.dbManager.getRegisteredLectures();
     return true ; 
   }
 
@@ -69,6 +71,8 @@ export class AuthenticationService {
         UserDetailsService.type = currenUser.type;
         UserDetailsService.courses = this.dbManager.getCourses();
         UserDetailsService.registered = this.dbManager.getRegistered();
+        UserDetailsService.lectures = this.dbManager.getLectures();
+        UserDetailsService.registeredlecs = this.dbManager.getRegisteredLectures();
         return true;
       }
       

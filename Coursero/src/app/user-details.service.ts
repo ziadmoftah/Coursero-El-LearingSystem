@@ -14,6 +14,7 @@ export abstract class UserDetailsService {
   public static courses:CourseService[];
   public static lectures:LecturesService[];
   public static registered:{courseName:string,studentName:string}[];
+  public static registeredlecs:{lectureName:string, courseName:string}[];
   constructor(private dbManager: DatabaseService) {
     UserDetailsService.userName = UserDetailsService.type = UserDetailsService.course = "";
     UserDetailsService.courses = this.dbManager.getCourses();

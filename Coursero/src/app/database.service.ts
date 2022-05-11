@@ -141,4 +141,24 @@ export class DatabaseService {
     return courses;
   }
 
+  registerLecture(lectureName:string, courseName:string){
+    // add users to notverified db
+    let temp = {lectureName,courseName}
+    let address=this.DBurl+"RegisteredLectures.json";
+    this.httpClient.post(address , temp).subscribe(response => console.log("Success"));
+  }
+
+  getRegisteredLectures():{lectureName:string, courseName:string}[]{
+    let address=this.DBurl+"RegisteredLectures.json";
+
+    var lectures = new Array<{lectureName:string, courseName:string}>();
+    this.httpClient.get<{lectureName:string, courseName:string}[]>(address)
+    .subscribe((data:{lectureName:string, courseName:string}[]) => {
+      Object.values(data).forEach(record => {
+          lectures.push(record);
+      })
+    });
+
+    return lectures;
+  }
 }
