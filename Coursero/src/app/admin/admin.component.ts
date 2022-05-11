@@ -1,4 +1,8 @@
+import { not } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
+import { DatabaseService } from '../database.service';
+import { UserService } from '../user.service';
+import { UserDetailsService } from '../user-details.service';
 
 export interface PeriodicElement {
   name: string;
@@ -19,6 +23,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
 ];
 
 
+
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -26,11 +31,22 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class AdminComponent implements OnInit {
 
-  displayedColumns: string[] = ['name', 'mail'];
-  dataSource = ELEMENT_DATA;
-  clickedRows = new Set<PeriodicElement>();
-  constructor() { }
+  displayedColumns: string[] = ['name', 'account'];
+  dataSource = UserDetailsService.notVerified;
+  clickedRows = new Set<UserService>();
+  constructor(private dbManager: DatabaseService) { }
 
   ngOnInit(): void {
+    /*
+    let verifiedUsers = this.dbManager.getUsers(true);
+    verifiedUsers.forEach(user => {
+      if(user.type == "S")
+        students.push(user);
+        else{
+          faculty.push(user);
+        }
+    })*/
+    console.log(UserDetailsService.notVerified);
   }
+
 }

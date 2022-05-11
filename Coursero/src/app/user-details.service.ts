@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { CourseService } from './course.service';
 import { DatabaseService } from './database.service';
 import { LecturesService } from './lectures.service';
+import { UserService } from './user.service';
+
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +17,9 @@ export abstract class UserDetailsService {
   public static lectures:LecturesService[];
   public static registered:{courseName:string,studentName:string}[];
   public static registeredlecs:{lectureName:string, courseName:string}[];
+  public static verifiedUsers: UserService[]; 
+  public static notVerified :UserService[]; 
+
   constructor(private dbManager: DatabaseService) {
     UserDetailsService.userName = UserDetailsService.type = UserDetailsService.course = "";
     UserDetailsService.courses = this.dbManager.getCourses();
