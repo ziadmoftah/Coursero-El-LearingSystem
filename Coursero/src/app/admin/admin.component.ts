@@ -4,26 +4,6 @@ import { DatabaseService } from '../database.service';
 import { UserService } from '../user.service';
 import { UserDetailsService } from '../user-details.service';
 
-export interface PeriodicElement {
-  name: string;
-  mail: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {name: 'Hydrogen',  mail: 'H@gmail.com'},
-  {name: 'Helium', mail: 'He@gmail.com'},
-  {name: 'Lithium', mail: 'Li@gmail.com'},
-  {name: 'Beryllium', mail: 'Be@gmail.com'},
-  {name: 'Boron',  mail: 'B@gmail.com'},
-  {name: 'Carbon', mail: 'C@gmail.com'},
-  {name: 'Nitrogen',  mail: 'N@gmail.com'},
-  {name: 'Oxygen', mail: 'O@gmail.com'},
-  {name: 'Fluorine', mail: 'F@gmail.com'},
-  {name: 'Neon', mail: 'Ne@gmail.com'},
-];
-
-
-
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -32,7 +12,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class AdminComponent implements OnInit {
 
   displayedColumns: string[] = ['name', 'account'];
-  dataSource = UserDetailsService.notVerified;
+  dataSource: UserService []= UserDetailsService.notVerified;
   clickedRows = new Set<UserService>();
   constructor(private dbManager: DatabaseService) { }
 
@@ -46,7 +26,7 @@ export class AdminComponent implements OnInit {
           faculty.push(user);
         }
     })*/
-    console.log(UserDetailsService.notVerified);
+  console.log(this.dataSource);    
   }
 
 }
