@@ -16,13 +16,15 @@
   <hr>
   <br>  <br> 
 <div class="courseform" *ngIf="(checkType())">
+
   <form > 
     <label for="lec-name">Lecture Name :</label>
-    <input type="text" [(ngModel)]="lec_name" id="LectureName" name="LectureName" ><br><br>
+    <input type="text" [(ngModel)]="lec_name" name="LectureName" ><br><br>
     <label for="lec-date">Lecture Date :</label>
-    <input type="date" [(ngModel)]="lec_date" id="LectureDate" name="LectureDate" ><br><br>
-    <input type="submit" (click)="add_lec()"value="Add Lecture">
+    <input type="date" [(ngModel)]="lec_date" name="LectureDate" ><br><br>
+    <input type="submit"  [disabled]="!lec_name || !lec_date" (click)="add_lec() "value="Add Lecture">
   </form>
+
 </div>
 
 <br>  <br>  <br>  <br>
