@@ -13,7 +13,7 @@ export class AdminComponent implements OnInit {
 
   displayedColumns: string[] = ['name', 'account'];
   dataSource: UserService []= UserDetailsService.notVerified;
-  clickedRows = new Set<UserService>();
+  clicked_Notverified = new Set<UserService>();
   constructor(private dbManager: DatabaseService) { }
 
   ngOnInit(): void {
@@ -28,5 +28,11 @@ export class AdminComponent implements OnInit {
     })*/
   console.log(this.dataSource);    
   }
-
+  verify()
+  {
+    this.clicked_Notverified.forEach(nverified => {
+      this.dbManager.verifyUser(nverified);
+    })
+    
+  }
 }

@@ -33,8 +33,6 @@ export class CoursesComponent implements OnInit {
   fillcourses()
   {
 
-    console.log( UserDetailsService.courses);
-    console.log( UserDetailsService.registered);
 
     for (let i = 0; i < UserDetailsService.courses.length; i++) {
       for (let j = 0; j < UserDetailsService.registered.length; j++) {
