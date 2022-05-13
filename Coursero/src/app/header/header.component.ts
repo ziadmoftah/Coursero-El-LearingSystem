@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserDetailsService } from '../user-details.service';
 
 @Component({
   selector: 'app-header',
@@ -12,4 +13,8 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  checkType():Boolean
+  {
+    return UserDetailsService.type == "A";
+  }
 }

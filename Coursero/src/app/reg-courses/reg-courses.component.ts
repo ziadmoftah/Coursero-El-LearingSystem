@@ -8,6 +8,9 @@ import { UserDetailsService } from '../user-details.service';
   templateUrl: './reg-courses.component.html',
   styleUrls: ['./reg-courses.component.css']
 })
+
+
+
 export class RegCoursesComponent implements OnInit {
 
   coursess:CourseService[];
@@ -30,7 +33,7 @@ export class RegCoursesComponent implements OnInit {
 
   checkType():Boolean
   {
-    return this.type == "F";
+    return this.type == "F" || this.type == "A";
   }
 
   Reg (Coursename : string){

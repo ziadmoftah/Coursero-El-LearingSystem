@@ -12,7 +12,7 @@ export class AuthenticationService {
   errorMessage:string = "" ;
   constructor(private dbManager: DatabaseService) { 
     this.Users = [];
-    this.Users = dbManager.getUsers(false);
+    this.Users = dbManager.getUsers(true);
     //let user : UserService = new UserService();
     //user.FillData("mohamed","mohamed","zaki","S");
     //this.Users.push(user);
@@ -45,6 +45,8 @@ export class AuthenticationService {
     UserDetailsService.registered = this.dbManager.getRegistered();
     UserDetailsService.lectures = this.dbManager.getLectures();
     UserDetailsService.registeredlecs = this.dbManager.getRegisteredLectures();
+    UserDetailsService.verifiedUsers = this.dbManager.getUsers(true);
+    UserDetailsService.notVerified = this.dbManager.getUsers(false);
     return true ; 
   }
 
@@ -75,7 +77,7 @@ export class AuthenticationService {
         UserDetailsService.lectures = this.dbManager.getLectures();
         UserDetailsService.registeredlecs = this.dbManager.getRegisteredLectures();
 
-        //UserDetailsService.verifiedUsers = this.dbManager.getUsers(true);
+        UserDetailsService.verifiedUsers = this.dbManager.getUsers(true);
         UserDetailsService.notVerified = this.dbManager.getUsers(false);
 
 

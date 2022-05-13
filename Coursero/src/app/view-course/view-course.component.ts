@@ -20,7 +20,6 @@ export class ViewCourseComponent implements OnInit {
 
   constructor(private dbManager: DatabaseService , public datepipe: DatePipe) {  
     this.lec_date = new Date();
-    this.datepipe.transform(this.lec_date, 'yyyy-MM-dd');
     this.type = UserDetailsService.type;
     this.lecs = new Array<LecturesService>();
     this.fillLectures();
@@ -31,11 +30,12 @@ export class ViewCourseComponent implements OnInit {
 
   checkType():Boolean
   {
-    return this.type == "F";
+    return this.type == "F" || this.type == "A";
   }
 
   add_lec (){
     var lec_added:LecturesService = new LecturesService();
+    this.datepipe.transform(this.lec_date, 'yyyy-MM-dd');
     lec_added.FillData (this.lec_name ,UserDetailsService.course, this.lec_date);
     UserDetailsService.lectures.push(lec_added);
     this.dbManager.addLecture(lec_added);  

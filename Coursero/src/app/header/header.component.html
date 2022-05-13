@@ -20,12 +20,13 @@
         <td ><button type="button" class="butt"></button></td>
         <td ><button type="button" class="butt"></button></td>
         <!---->
-      
+
         <td><button type="button" style="width: 70px;" class="butt" routerLink="/Home">Home</button> </td> 
         <td><button type="button" style="width: 110px;"class="butt" routerLink="/Calender">Calender</button> </td>   
         <td><button type="button" style="width: 100px;" class="butt" routerLink="/Course">Courses</button> </td>     
-        <td><button type="button" style="width: 80px;" class="butt" routerLink="/Admin">Admin</button> </td>        
+        <td *ngIf="(checkType())" ><button type="button" style="width: 80px;" class="butt" routerLink="/Admin">Admin</button> </td>        
         <td><button type="button" style="width: 90px; color: blue;" class="butt" routerLink="/SignIn">LogOut</button> </td>
       </tr>
     </table>
   </div>
+  

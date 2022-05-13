@@ -21,6 +21,7 @@ import dayGridPlugin from '@fullcalendar/daygrid' ;
 import { AdminComponent } from './admin/admin.component';
 import { UserService } from './user.service';
 import { AuthenticationService } from './authentication.service';
+import { DatePipe } from '@angular/common';
 
 
 
@@ -65,7 +66,7 @@ FullCalendarModule.registerPlugins([
     FullCalendarModule,
     FormsModule
   ],
-  providers: [DatabaseService, UserService, AuthenticationService, CourseService],
+  providers: [DatabaseService, UserService, AuthenticationService, CourseService, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

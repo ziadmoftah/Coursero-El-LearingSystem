@@ -3,7 +3,7 @@
 <div class="row">
     <div class="column1">
         <h1 style="text-align: center;">Student</h1><hr>
-        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+        <table mat-table [dataSource]="dataSource_Students" class="mat-elevation-z8 demo-table">
   
             <!-- Name Column -->
              <ng-container matColumnDef="name">
@@ -21,42 +21,52 @@
              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
              <tr
                  mat-row
-                 (click)="clickedRows.add(row)"
-                 [class.demo-row-is-clicked]="clickedRows.has(row)"
+                 (click)="clicked_Student.add(row)"
+                 [class.demo-row-is-clicked]="clicked_Student.has(row)"
                  *matRowDef="let row; columns: displayedColumns;"
              ></tr>
            </table>
            <hr><br>
            <button type="button" id="delete1" style="margin:0 auto; display:block;">Delete</button>
            <br>
+           
+          <ul>
+            <li *ngFor="let clickedRow of clicked_Student">
+              Clicked on {{clickedRow.name}}
+            </li>
+          </ul>
     </div>
     <div class="column2">
       <h1 style="text-align: center;">Faculty</h1><hr>
-      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+      <table mat-table [dataSource]="dataSource_fuculty" class="mat-elevation-z8 demo-table">
 
           <!-- Name Column -->
            <ng-container matColumnDef="name">
              <th mat-header-cell *matHeaderCellDef>Name</th>
              <td mat-cell *matCellDef="let element">{{element.name}}</td>
            </ng-container>          
-           <!-- mail Column
-           <ng-container matColumnDef="mail">
+           <!-- mail Column -->
+           <ng-container matColumnDef="account">
              <th mat-header-cell *matHeaderCellDef>Mail</th>
-             <td mat-cell *matCellDef="let element">{{element.mail}}</td>
-           </ng-container>
-          -->
+             <td mat-cell *matCellDef="let element">{{element.account}}</td>
+           </ng-container> 
          
            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
            <tr
                mat-row
-               (click)="clickedRows.add(row)"
-               [class.demo-row-is-clicked]="clickedRows.has(row)"
+               (click)="clicked_faculty.add(row)"
+               [class.demo-row-is-clicked]="clicked_faculty.has(row)"
                *matRowDef="let row; columns: displayedColumns;"
            ></tr>
          </table>
          <hr><br>
          <button type="button" id="delete2" style="margin:0 auto; display:block;">Delete</button>
          <br>
+         <ul>
+          <li *ngFor="let clickedRow of clicked_faculty">
+            Clicked on {{clickedRow.name}}
+          </li>
+        </ul>
   </div>
   <div class="column3">
       <h1 style="text-align: center;">New Accounts</h1><hr>
@@ -68,24 +78,29 @@
              <td mat-cell *matCellDef="let element">{{element.name}}</td>
            </ng-container>
         
-           <!-- mail Column 
+           <!-- mail Column -->
            <ng-container matColumnDef="account">
              <th mat-header-cell *matHeaderCellDef>Mail</th>
-             <td mat-cell *matCellDef="let element">{{element.}</td>
+             <td mat-cell *matCellDef="let element">{{element.account}}</td>
            </ng-container>
-          -->
+          
          
            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
            <tr
                mat-row
-               (click)="clickedRows.add(row)"
-               [class.demo-row-is-clicked]="clickedRows.has(row)"
+               (click)="clicked_Notverified.add(row)"
+               [class.demo-row-is-clicked]="clicked_Notverified.has(row)"
                *matRowDef="let row; columns: displayedColumns;"
            ></tr>
          </table>
          <hr><br>
-         <button type="button" id="approve" style="margin:0 auto; display:block;">Approve</button> <br>
+         <button type="button" id="approve" style="margin:0 auto; display:block;" (click)="verify()">Approve</button> <br>
          <button type="button" id="delete3" style="margin:0 auto; display:block;">Delete</button>
          <br>
+         <ul>
+          <li *ngFor="let clickedRow of clicked_Notverified">
+            Clicked on {{clickedRow.name}}
+          </li>
+        </ul>
   </div>
 </div>

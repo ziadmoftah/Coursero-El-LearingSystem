@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CourseService } from './course.service';
 import { DatabaseService } from './database.service';
 import { LecturesService } from './lectures.service';
+import { UserService } from './user.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -12,10 +13,10 @@ export class AppComponent {
   constructor(private dbManager: DatabaseService){}
 
   databaseTest(){
-    /*
-    let userData = new UserComponent();
-    userData.FillData("zaki" , "zaclone@shaco.lol" , "lol", "Student");
-    this.dbManager.addUser(userData , false);
+    
+    /*let userData = new UserService();
+    userData.FillData("zaki el admin" , "admin" , "admin", "A");
+    this.dbManager.addUser(userData , true);
     */
     /*let courseData = new CourseService();
     courseData.FillData("League of legends","LOL","ASU","4");
