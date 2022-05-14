@@ -4,22 +4,23 @@ import { DatabaseService } from '../database.service';
 import { UserDetailsService } from '../user-details.service';
 import { DatePipe } from '@angular/common';
 
-
 @Component({
   selector: 'app-view-course',
   templateUrl: './view-course.component.html',
-  styleUrls: ['./view-course.component.css']
+  styleUrls: ['./view-course.component.css'],
+  providers: [DatePipe]
 })
 export class ViewCourseComponent implements OnInit {
 
   lecs :LecturesService[];
-
   lec_name :string = "";
-  lec_date :Date;
+  lec_date : any;
   type:string;
+  datePipeEn: DatePipe = new DatePipe('en-US');
 
   constructor(private dbManager: DatabaseService , public datepipe: DatePipe) {  
-    this.lec_date = new Date();
+
+    this.lec_date = this.datePipeEn.transform( new Date(),'yyyy-MM-dd');
     this.type = UserDetailsService.type;
     this.lecs = new Array<LecturesService>();
     this.fillLectures();
@@ -34,8 +35,8 @@ export class ViewCourseComponent implements OnInit {
   }
 
   add_lec (){
+
     var lec_added:LecturesService = new LecturesService();
-    this.datepipe.transform(this.lec_date, 'yyyy-MM-dd');
     lec_added.FillData (this.lec_name ,UserDetailsService.course, this.lec_date);
     UserDetailsService.lectures.push(lec_added);
     this.dbManager.addLecture(lec_added);  
@@ -46,6 +47,9 @@ export class ViewCourseComponent implements OnInit {
       courseName:UserDetailsService.course
     }; 
     UserDetailsService.registeredlecs.push(temp);
+    this.lec_name = "";
+    this.lecs = new Array<LecturesService>();
+    this.fillLectures();
   }
 
   fillLectures()
