@@ -4,6 +4,8 @@ import { UserService } from './user.service';
 import { CourseService } from './course.service';
 import { LecturesService } from './lectures.service';
 import { CoursesComponent } from './courses/courses.component';
+import { Observable } from 'rxjs';
+import { UserDetailsService } from './user-details.service';
 
 @Injectable({
   providedIn: 'root'
@@ -31,22 +33,6 @@ export class DatabaseService {
     this.httpClient.post(address , user).subscribe(response => console.log("Success"));
   }
 
-  verifyUser(user:UserService){
-    // remove user from notVerified db and add to verified users db
-    this.deleteUser(user , false);
-    this.addUser(user , true)
-
-  }
-  deleteUser(user:UserService, verified:boolean){
-    //if verified remove from verified db and if not remove from not verified
-    if (verified == true){
-      const address = this.DBurl+"Verified.json";
-    }else{
-      const address = this.DBurl+"notVerified.json";
-    }
-
-    // remove lesa ha3melha
-  }
   getUsers(verified:boolean):UserService[]{
     let address="";
     if (verified == true){
@@ -160,5 +146,42 @@ export class DatabaseService {
     });
 
     return lectures;
+  }
+
+
+
+  verifyUser(user:UserService){
+    this.addUser(user , true);
+    UserDetailsService.notVerified = UserDetailsService.notVerified.filter(record => record.Get_Account() != user.Get_Account())
+    
+    this.httpClient.delete(this.DBurl+"notVerified.json").subscribe();
+    UserDetailsService.notVerified.forEach(record => {
+      this.httpClient.post(this.DBurl+"notVerified.json" , record).subscribe();
+    })
+  }
+
+  deleteUser(user:UserService , verified:boolean){
+    let address="";
+    if (verified == true){
+      address = this.DBurl+"Verified.json";
+    }else{
+      address = this.DBurl+"notVerified.json";
+    }
+    if (!verified){
+      UserDetailsService.notVerified = UserDetailsService.notVerified.filter(record => record.Get_Account() != user.Get_Account())
+      
+      this.httpClient.delete(address).subscribe();
+      UserDetailsService.notVerified.forEach(record => {
+        this.httpClient.post(address , record).subscribe();
+      })
+    }
+    if (verified){
+      UserDetailsService.verifiedUsers = UserDetailsService.verifiedUsers.filter(record => record.Get_Account() != user.Get_Account())
+      
+      this.httpClient.delete(address).subscribe();
+      UserDetailsService.notVerified.forEach(record => {
+        this.httpClient.post(address , record).subscribe();
+      })
+    }
   }
 }
