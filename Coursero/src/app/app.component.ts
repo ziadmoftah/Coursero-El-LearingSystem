@@ -14,10 +14,25 @@ export class AppComponent {
 
   databaseTest(){
     
-    /*let userData = new UserService();
+    let userData = new UserService();
     userData.FillData("zaki el admin" , "admin" , "admin", "A");
     this.dbManager.addUser(userData , true);
-    */
+    
+    let userData1 = new UserService();
+    userData1.FillData("Ahmed" , "ahmed@gmail.com" , "lotfy", "S");
+    this.dbManager.addUser(userData1 , true);
+    
+    let userData2 = new UserService();
+    userData2.FillData("Omar" , "omar@gmail.com" , "essam", "S");
+    this.dbManager.addUser(userData2 , true);
+    
+    let userData3 = new UserService();
+    userData3.FillData("Zaki" , "zaclone@gmail.com" , "zac", "S");
+    this.dbManager.addUser(userData3 , true);
+    
+    let userData4 = new UserService();
+    userData4.FillData("ASU" , "ASU@gmail.com" , "ASU", "F");
+    this.dbManager.addUser(userData4 , true);
     /*let courseData = new CourseService();
     courseData.FillData("League of legends","LOL","ASU","4");
     this.dbManager.addCourse(courseData);*/

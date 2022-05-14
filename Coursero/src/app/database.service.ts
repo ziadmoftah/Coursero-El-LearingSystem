@@ -168,20 +168,25 @@ export class DatabaseService {
       address = this.DBurl+"notVerified.json";
     }
     if (!verified){
-      UserDetailsService.notVerified = UserDetailsService.notVerified.filter(record => record.Get_Account() != user.Get_Account())
+      UserDetailsService.notVerified = UserDetailsService.notVerified.filter(record => record.Get_Account() !== user.Get_Account())
       
-      this.httpClient.delete(address).subscribe();
-      UserDetailsService.notVerified.forEach(record => {
-        this.httpClient.post(address , record).subscribe();
-      })
+      this.httpClient.delete(address).subscribe((data) => {
+        UserDetailsService.notVerified.forEach(record => {
+          this.addUser(record,false);
+        })
+      });
+      
     }
     if (verified){
-      UserDetailsService.verifiedUsers = UserDetailsService.verifiedUsers.filter(record => record.Get_Account() != user.Get_Account())
+      UserDetailsService.verifiedUsers = UserDetailsService.verifiedUsers.filter(record => record.Get_Account() !== user.Get_Account())
       
-      this.httpClient.delete(address).subscribe();
-      UserDetailsService.notVerified.forEach(record => {
-        this.httpClient.post(address , record).subscribe();
-      })
+      this.httpClient.delete(address).subscribe((data) => {
+        UserDetailsService.verifiedUsers.forEach(record => {
+          this.addUser(record,true);
+        })
+      });
+
     }
   }
+  
 }

@@ -41,11 +41,9 @@ export class AdminComponent implements OnInit {
   }
   verify()
   {
-  console.log (this.clicked_Notverified);
-    this.clicked_Notverified.forEach(nverified => {
+      this.clicked_Notverified.forEach(nverified => {
       this.dbManager.verifyUser(nverified);
       UserDetailsService.notVerified = UserDetailsService.notVerified.filter(person => person !== nverified);
-      console.log(UserDetailsService.notVerified);
       UserDetailsService.verifiedUsers.push(nverified);
       if(nverified.type == "S")
         this.dataSource_Students.push(nverified);
@@ -53,6 +51,44 @@ export class AdminComponent implements OnInit {
         this.dataSource_fuculty.push(nverified);
     })
     this.clicked_Notverified.clear();
+    this.dataSource = UserDetailsService.notVerified;
+    this.dataSource2 = UserDetailsService.verifiedUsers;
+    this.dataSource_fuculty = this.dataSource2.filter(course => course.type == 'F');  
+    this.dataSource_Students = this.dataSource2.filter(course => course.type == 'S'); 
+  }
+  delete(type:string, isVerified:boolean)
+  {
+    console.log(isVerified);
+    
+    if(isVerified){
+      if(type == "S"){
+      this.clicked_Student.forEach(verified => {
+        this.dbManager.deleteUser(verified,true);
+
+      })
+      }
+      else
+      {
+        this.clicked_faculty.forEach(verified => {
+          this.dbManager.deleteUser(verified,true);
+
+  
+        })
+      }
+      
+    }
+    else
+    {
+      this.clicked_Notverified.forEach(verified => {
+        this.dbManager.deleteUser(verified,false);
+        
+
+      })
+      
+    }
+    this.clicked_Notverified.clear();
+    this.clicked_Student.clear();
+    this.clicked_faculty.clear();
     this.dataSource = UserDetailsService.notVerified;
     this.dataSource2 = UserDetailsService.verifiedUsers;
     this.dataSource_fuculty = this.dataSource2.filter(course => course.type == 'F');  

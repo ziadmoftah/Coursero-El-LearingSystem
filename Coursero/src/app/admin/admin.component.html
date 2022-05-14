@@ -27,7 +27,7 @@
              ></tr>
            </table>
            <hr><br>
-           <button type="button" id="delete1" style="margin:0 auto; display:block;">Delete</button>
+           <button type="button" id="delete1" style="margin:0 auto; display:block;" (click) = "delete('S',true)">Delete</button>
            <br>
            
           <ul>
@@ -60,7 +60,7 @@
            ></tr>
          </table>
          <hr><br>
-         <button type="button" id="delete2" style="margin:0 auto; display:block;">Delete</button>
+         <button type="button" id="delete2" style="margin:0 auto; display:block;" (click) = "delete('F',true)">Delete</button>
          <br>
          <ul>
           <li *ngFor="let clickedRow of clicked_faculty">
@@ -95,7 +95,7 @@
          </table>
          <hr><br>
          <button type="button" id="approve" style="margin:0 auto; display:block;" (click)="verify()">Approve</button> <br>
-         <button type="button" id="delete3" style="margin:0 auto; display:block;">Delete</button>
+         <button type="button" id="delete3" style="margin:0 auto; display:block;" (click) = "delete('notverified',false)">Delete</button>
          <br>
          <ul>
           <li *ngFor="let clickedRow of clicked_Notverified">
