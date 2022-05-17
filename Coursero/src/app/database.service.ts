@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { UserService } from './user.service';
 import { CourseService } from './course.service';
 import { LecturesService } from './lectures.service';
@@ -112,7 +112,6 @@ export class DatabaseService {
     let address=this.DBurl+"RegisteredCourses.json";
     this.httpClient.post(address , temp).subscribe(response => console.log("Success"));
   }
-
   getRegistered():{courseName:string,studentName:string}[]{
     let address=this.DBurl+"RegisteredCourses.json";
 
@@ -126,14 +125,12 @@ export class DatabaseService {
 
     return courses;
   }
-
   registerLecture(lectureName:string, courseName:string){
     // add users to notverified db
     let temp = {lectureName,courseName}
     let address=this.DBurl+"RegisteredLectures.json";
     this.httpClient.post(address , temp).subscribe(response => console.log("Success"));
   }
-
   getRegisteredLectures():{lectureName:string, courseName:string}[]{
     let address=this.DBurl+"RegisteredLectures.json";
 
@@ -147,46 +144,80 @@ export class DatabaseService {
 
     return lectures;
   }
-
-
-
   verifyUser(user:UserService){
     this.addUser(user , true);
-    UserDetailsService.notVerified = UserDetailsService.notVerified.filter(record => record.Get_Account() != user.Get_Account())
-    
-    this.httpClient.delete(this.DBurl+"notVerified.json").subscribe();
-    UserDetailsService.notVerified.forEach(record => {
-      this.httpClient.post(this.DBurl+"notVerified.json" , record).subscribe();
-    })
+    this.deleteUser(user , false);
   }
-
   deleteUser(user:UserService , verified:boolean){
     let address="";
     if (verified == true){
-      address = this.DBurl+"Verified.json";
+      address = this.DBurl+"Verified";
     }else{
-      address = this.DBurl+"notVerified.json";
+      address = this.DBurl+"notVerified";
     }
-    if (!verified){
-      UserDetailsService.notVerified = UserDetailsService.notVerified.filter(record => record.Get_Account() !== user.Get_Account())
-      
-      this.httpClient.delete(address).subscribe((data) => {
-        UserDetailsService.notVerified.forEach(record => {
-          this.addUser(record,false);
-        })
-      });
-      
-    }
-    if (verified){
-      UserDetailsService.verifiedUsers = UserDetailsService.verifiedUsers.filter(record => record.Get_Account() !== user.Get_Account())
-      
-      this.httpClient.delete(address).subscribe((data) => {
-        UserDetailsService.verifiedUsers.forEach(record => {
-          this.addUser(record,true);
-        })
-      });
+    
+    this.httpClient.get(address + ".json").subscribe(response => {
+      let counter = 0;
+      let index = -1;
+      Object.values(response).forEach(lol => {
+        if(Object.values(lol)[1] == user.Get_Account()){
+          index = counter;
+        }
+        counter++;
+      })
+      let counter1 = 0;
+      Object.keys(response).forEach(lol => {
+        if(counter1 == index){
+          this.httpClient.delete(address + "/" + lol + ".json").subscribe();
+        }
+        counter1++;
+      })
+    });
+  }
 
+  updateTest(){
+    /*
+    const httpOtpions = {
+      headers: new HttpHeaders({
+        'Content-Type': "application/json",
+        'Access-Control-Allow-Origin': '*',
+      })
     }
+    //this.httpClient.get("https://e-learning-system-c93f6-default-rtdb.europe-west1.firebasedatabase.app/Courses/-N0fybDkASLvKhNDQh3o", httpOtpions).subscribe();
+    let options = {params: new HttpParams().set('orderBy', 'name').set("equalTo" , "Ahmed")};
+    /*
+    this.httpClient.delete(this.DBurl + "test.json/", {headers : new HttpHeaders({
+      'Content-Type': "application/json",
+      'Access-Control-Allow-Origin': '*',
+    }) , params : new HttpParams().set('name', '"Ahmed"') }).subscribe();
+    */
+    /*
+    this.httpClient.post(this.DBurl + "test.json" , {"ID": "Abc" , "name":"lol"}).subscribe();
+    this.httpClient.post(this.DBurl + "test.json" , {"ID": "Abc" , "name":"Ahmed"}).subscribe();
+  
+    
+    this.httpClient.get(this.DBurl + "Verified.json").subscribe(response => {
+      let counter = 0;
+      let index = -1;
+      Object.values(response).forEach(lol => {
+        if(Object.values(lol)[1] == "Ahmed"){
+          index = counter;
+        }
+        console.log(Object.values(lol)[0]);
+        counter++;
+      })
+      let counter1 = 0;
+      Object.keys(response).forEach(lol => {
+        if(counter1 == index){
+          this.httpClient.delete(this.DBurl + "test/" + lol + ".json").subscribe();
+        }
+        counter1++;
+      })
+    });
+    */
+   let lol = new UserService() ; 
+   lol.FillData("yasser@gmail.com" , "yasser","rashid" , "S") 
+    this.deleteUser(lol, true);
   }
   
 }

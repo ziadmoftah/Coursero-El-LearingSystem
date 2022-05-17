@@ -13,7 +13,7 @@ export class AppComponent {
   constructor(private dbManager: DatabaseService){}
 
   databaseTest(){
-    
+    /*
     let userData = new UserService();
     userData.FillData("zaki el admin" , "admin" , "admin", "A");
     this.dbManager.addUser(userData , true);
@@ -43,8 +43,9 @@ export class AppComponent {
     */
     
     //this.dbManager.registerCourse("Math","Mohamed");
-    var users = this.dbManager.getUsers(false);
-    var courses = this.dbManager.getCourses();
-    var lectures = this.dbManager.getLectures();
+   // var users = this.dbManager.getUsers(false);
+    //var courses = this.dbManager.getCourses();
+    //var lectures = this.dbManager.getLectures();
+    this.dbManager.updateTest();
   }
 }
