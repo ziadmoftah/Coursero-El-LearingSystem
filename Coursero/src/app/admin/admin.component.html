@@ -21,7 +21,7 @@
              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
              <tr
                  mat-row
-                 (click)="clicked_Student.add(row)"
+                 (click)="clicked_Student.has(row) ?  clicked_Student.delete(row) : clicked_Student.add(row)"
                  [class.demo-row-is-clicked]="clicked_Student.has(row)"
                  *matRowDef="let row; columns: displayedColumns;"
              ></tr>
@@ -48,7 +48,7 @@
            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
            <tr
                mat-row
-               (click)="clicked_faculty.add(row)"
+               (click)="clicked_faculty.has(row) ?  clicked_faculty.delete(row) : clicked_faculty.add(row) "
                [class.demo-row-is-clicked]="clicked_faculty.has(row)"
                *matRowDef="let row; columns: displayedColumns;"
            ></tr>
@@ -77,7 +77,7 @@
            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
            <tr
                mat-row
-               (click)="clicked_Notverified.add(row)"
+               (click)="clicked_Notverified.has(row) ?  clicked_Notverified.delete(row) : clicked_Notverified.add(row) "
                [class.demo-row-is-clicked]="clicked_Notverified.has(row)"
                *matRowDef="let row; columns: displayedColumns;"
            ></tr>
