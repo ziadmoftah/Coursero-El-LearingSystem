@@ -56,6 +56,7 @@ export class AdminComponent implements OnInit {
     this.dataSource_fuculty = this.dataSource2.filter(course => course.type == 'F');  
     this.dataSource_Students = this.dataSource2.filter(course => course.type == 'S'); 
   }
+
   delete(type:string, isVerified:boolean)
   {
     console.log(isVerified);
@@ -63,29 +64,28 @@ export class AdminComponent implements OnInit {
     if(isVerified){
       if(type == "S"){
       this.clicked_Student.forEach(verified => {
+        console.log(verified);
         this.dbManager.deleteUser(verified,true);
-
+        UserDetailsService.verifiedUsers = UserDetailsService.verifiedUsers.filter(person => person !== verified);
       })
       }
       else
       {
         this.clicked_faculty.forEach(verified => {
           this.dbManager.deleteUser(verified,true);
-
-  
+          UserDetailsService.verifiedUsers = UserDetailsService.verifiedUsers.filter(person => person !== verified);
         })
       }
       
     }
     else
     {
-      this.clicked_Notverified.forEach(verified => {
-        this.dbManager.deleteUser(verified,false);
-        
-
-      })
-      
+      this.clicked_Notverified.forEach(nverified => {
+        this.dbManager.deleteUser(nverified,false);
+        UserDetailsService.notVerified = UserDetailsService.notVerified.filter(person => person !== nverified);
+      })    
     }
+
     this.clicked_Notverified.clear();
     this.clicked_Student.clear();
     this.clicked_faculty.clear();

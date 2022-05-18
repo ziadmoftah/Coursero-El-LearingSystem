@@ -25,14 +25,30 @@ export class AppComponent {
     let userData2 = new UserService();
     userData2.FillData("Omar" , "omar@gmail.com" , "essam", "S");
     this.dbManager.addUser(userData2 , true);
-    
+    */
+    /*
     let userData3 = new UserService();
     userData3.FillData("Zaki" , "zaclone@gmail.com" , "zac", "S");
     this.dbManager.addUser(userData3 , true);
     
     let userData4 = new UserService();
-    userData4.FillData("ASU" , "ASU@gmail.com" , "ASU", "F");
+    userData4.FillData("FCIS" , "FCIS@gmail.com" , "FCIS", "F");
     this.dbManager.addUser(userData4 , true);
+    */
+    /*
+    let userData3 = new UserService();
+    userData3.FillData("Karim" , "karim@gmail.com" , "karim", "S");
+    this.dbManager.addUser(userData3 , false);
+    
+    let userData4 = new UserService();
+    userData4.FillData("MIU" , "MIU@gmail.com" , "MIU", "F");
+    this.dbManager.addUser(userData4 , false);
+
+    /*
+    let userData5 = new UserService();
+    userData3.FillData("Sheshtawy" , "sheshtawy@gmail.com" , "sheshtawy", "S");
+    this.dbManager.addUser(userData3 , true);
+
     /*let courseData = new CourseService();
     courseData.FillData("League of legends","LOL","ASU","4");
     this.dbManager.addCourse(courseData);*/
@@ -46,6 +62,6 @@ export class AppComponent {
    // var users = this.dbManager.getUsers(false);
     //var courses = this.dbManager.getCourses();
     //var lectures = this.dbManager.getLectures();
-    this.dbManager.updateTest();
+    //this.dbManager.updateTest();
   }
 }

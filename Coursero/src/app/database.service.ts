@@ -160,7 +160,7 @@ export class DatabaseService {
       let counter = 0;
       let index = -1;
       Object.values(response).forEach(lol => {
-        if(Object.values(lol)[1] == user.Get_Account()){
+        if(Object.values(lol)[0] == user.Get_Account()){
           index = counter;
         }
         counter++;
@@ -217,7 +217,9 @@ export class DatabaseService {
     */
    let lol = new UserService() ; 
    lol.FillData("yasser@gmail.com" , "yasser","rashid" , "S") 
-    this.deleteUser(lol, true);
+   //this.addUser(lol,true);
+   console.log(lol);
+   this.deleteUser(lol, true);
   }
   
 }
