@@ -71,6 +71,7 @@ export class AuthenticationService {
       if (currenUser.Get_Account() == account && currenUser.Get_Password() == password){
         this.errorMessage = "Valid User" ;
         UserDetailsService.userName = currenUser.Get_Account();
+        UserDetailsService.Name = currenUser.Get_Name();
         UserDetailsService.type = currenUser.type;
         UserDetailsService.courses = this.dbManager.getCourses();
         UserDetailsService.registered = this.dbManager.getRegistered();

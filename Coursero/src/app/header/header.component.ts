@@ -8,6 +8,7 @@ import { UserDetailsService } from '../user-details.service';
 })
 export class HeaderComponent implements OnInit {
 
+  name = UserDetailsService.Name;
   constructor() { }
 
   ngOnInit(): void {
