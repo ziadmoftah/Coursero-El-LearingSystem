@@ -40,6 +40,7 @@ export class AuthenticationService {
     this.Users.push(newUser);
     this.errorMessage = "User Registered Successfully" ;
     UserDetailsService.userName = newUser.Get_Account();
+    UserDetailsService.Name = newUser.Get_Name();
     UserDetailsService.type = newUser.type;
     UserDetailsService.courses = this.dbManager.getCourses();
     UserDetailsService.registered = this.dbManager.getRegistered();

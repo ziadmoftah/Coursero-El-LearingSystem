@@ -11,6 +11,7 @@ import { UserService } from './user.service';
 export abstract class UserDetailsService {
 
   public static userName:string;
+  public static Name:string;
   public static type:string;
   public static course:string;
   public static courses:CourseService[];
