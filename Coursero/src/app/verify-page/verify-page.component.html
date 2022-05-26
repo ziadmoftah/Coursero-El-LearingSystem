@@ -1,0 +1,65 @@
+<p>Welcome {{User}}</p> <!--Interpolation-->
+
+First Name:<input type="text" [(ngModel)] = "fName"> <!--two way binding-->
+Last Name:<input type="text" [(ngModel)] = "lName">
+<input type="text" [(ngModel)] =  "fName + ' ' + lName">
+<p>{{fName + ' ' + lName}}</p> <!--Interpolation-->
+
+<button [disabled] = "!fName || !lName" (click) = "matches()" > Submit el Submit</button> <!--property binding --- event binding  -->
+
+<label *ngIf="lol">Shatur ya ngm</label> <!--ngIf-->
+
+<div *ngIf="lol">
+
+    <select>
+        <option *ngFor="let ind of a; let i = index; let even = even; let odd = odd" [ngClass]="{odd:odd, even:even}">{{i}} {{ind.name | uppercase}} {{ind.number | currency:'USD':true}} </option>  <!--ngFor -- ngClass -- data pipe-->>
+    </select>
+
+</div>
+
+<div [ngSwitch]="country"> <!--ngSwitch-->
+    <h3 *ngSwitchCase="'IN'">India</h3>
+    <h3 *ngSwitchCase="'EN'">England</h3>
+    <h3 *ngSwitchCase="'US'">United States</h3>
+    <h3 *ngSwitchDefault>You did not select a country</h3>
+</div>
+
+<form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)"> <!-- VALIDATION -->
+
+<div>
+    Name <span style="color:red">*</span>:
+    <input formControlName="name" placeholder="Your name"/>
+
+        <div *ngIf="myForm.get('name').invalid && (myForm.get('name').dirty || myForm.get('name').touched)">
+          <span style="color:red"> Please, provide a name.</span>
+        </div>
+    
+
+    <br/><br/>
+
+    Email:
+    <input formControlName = 'email' placeholder="Your email"/>
+    <div *ngIf="myForm.get('email').invalid && (myForm.get('email').dirty || myForm.get('email').touched)">
+        <span style="color:red"> Please provide a vaild email address.</span>
+    </div>
+    <br/><br/>
+    Message:
+    <input formControlName = 'message' placeholder="Your message"/>
+    <div *ngIf="myForm.get('message').invalid && (myForm.get('message').dirty || myForm.get('message').touched)">
+        <span style="color:red">Message must be at least 15 characters long.</span>>
+    </div>
+</div> 
+
+<br/><br/><br/><br/>
+
+<button type = "submit" [disabled]="myForm.invalid"> Send </button>
+<br/><br/>
+
+<div *ngIf="myForm.valid">
+    <p> Name: {{myForm.value.name}}</p>
+    <p> Email: {{myForm.value.email}}</p>
+    <p> Message: {{myForm.value.message}}</p>
+</div>
+
+</form>
+

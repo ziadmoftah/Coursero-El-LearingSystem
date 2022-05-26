@@ -22,7 +22,10 @@ import { AdminComponent } from './admin/admin.component';
 import { UserService } from './user.service';
 import { AuthenticationService } from './authentication.service';
 import { DatePipe } from '@angular/common';
-
+import { CourseService } from './course.service';
+import { FormsModule } from '@angular/forms';
+import { VerifyPageComponent } from './verify-page/verify-page.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 const routes: Routes = [
@@ -34,12 +37,14 @@ const routes: Routes = [
   { path: 'RegisterCourse', component: RegCoursesComponent },
   { path: 'Calender', component: CalendarComponent },
   { path: 'Admin', component: AdminComponent },
+  { path: 'Page', component: VerifyPageComponent},
   { path: '', redirectTo: '/SignIn', pathMatch: 'full' }
 
 ];
 
-import { CourseService } from './course.service';
-import { FormsModule} from '@angular/forms'
+
+
+
 FullCalendarModule.registerPlugins([ 
   dayGridPlugin,
   interactionPlugin
@@ -56,7 +61,9 @@ FullCalendarModule.registerPlugins([
     SignUpComponent,
     ViewCourseComponent,
     AdminComponent,
-    CalendarComponent
+    CalendarComponent,
+    VerifyPageComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -64,7 +71,8 @@ FullCalendarModule.registerPlugins([
     RouterModule.forRoot(routes),
     MatTableModule,
     FullCalendarModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [DatabaseService, UserService, AuthenticationService, CourseService, DatePipe],
   bootstrap: [AppComponent]
