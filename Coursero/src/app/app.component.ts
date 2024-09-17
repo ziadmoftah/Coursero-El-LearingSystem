@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CourseService } from './course.service';
 import { DatabaseService } from './database.service';
 import { LecturesService } from './lectures.service';
+import { UserService } from './user.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -13,10 +14,41 @@ export class AppComponent {
 
   databaseTest(){
     /*
-    let userData = new UserComponent();
-    userData.FillData("zaki" , "zaclone@shaco.lol" , "lol", "Student");
-    this.dbManager.addUser(userData , false);
+    let userData = new UserService();
+    userData.FillData("zaki el admin" , "admin" , "admin", "A");
+    this.dbManager.addUser(userData , true);
+    
+    let userData1 = new UserService();
+    userData1.FillData("Ahmed" , "ahmed@gmail.com" , "lotfy", "S");
+    this.dbManager.addUser(userData1 , true);
+    
+    let userData2 = new UserService();
+    userData2.FillData("Omar" , "omar@gmail.com" , "essam", "S");
+    this.dbManager.addUser(userData2 , true);
     */
+    /*
+    let userData3 = new UserService();
+    userData3.FillData("Zaki" , "zaclone@gmail.com" , "zac", "S");
+    this.dbManager.addUser(userData3 , true);
+    
+    let userData4 = new UserService();
+    userData4.FillData("FCIS" , "FCIS@gmail.com" , "FCIS", "F");
+    this.dbManager.addUser(userData4 , true);
+    */
+    /*
+    let userData3 = new UserService();
+    userData3.FillData("Karim" , "karim@gmail.com" , "karim", "S");
+    this.dbManager.addUser(userData3 , false);
+    
+    let userData4 = new UserService();
+    userData4.FillData("MIU" , "MIU@gmail.com" , "MIU", "F");
+    this.dbManager.addUser(userData4 , false);
+
+    /*
+    let userData5 = new UserService();
+    userData3.FillData("Sheshtawy" , "sheshtawy@gmail.com" , "sheshtawy", "S");
+    this.dbManager.addUser(userData3 , true);
+
     /*let courseData = new CourseService();
     courseData.FillData("League of legends","LOL","ASU","4");
     this.dbManager.addCourse(courseData);*/
@@ -27,10 +59,9 @@ export class AppComponent {
     */
     
     //this.dbManager.registerCourse("Math","Mohamed");
-    var users = this.dbManager.getUsers(false);
-    var courses = this.dbManager.getCourses();
-    var lectures = this.dbManager.getLectures();
-    var registered = this.dbManager.getRegistered();
-    console.log(registered);
+   // var users = this.dbManager.getUsers(false);
+    //var courses = this.dbManager.getCourses();
+    //var lectures = this.dbManager.getLectures();
+    //this.dbManager.updateTest();
   }
 }

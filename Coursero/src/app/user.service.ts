@@ -15,6 +15,7 @@ export class UserService {
   }
 
   ngOnInit(): void {
+    
   }
 
   FillData(name:string , account:string , password:string, type:string){
